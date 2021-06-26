@@ -1,10 +1,10 @@
-
+#include "../include/utils.h"
 #include "../include/user.h"
 #include <stdio.h>
 
 struct _rep_user{
     int id;
-    char *name;
+    ArregloChars name;
     int age;
 };
 
@@ -14,10 +14,11 @@ int generateId()
     return 0;
 }
 
-User createUser(int age, char *name){
+User createUser(int age, ArregloChars name){
     User user = new _rep_user;
     user->id = generateId();
     user->age = age;
+    user->name = name;
     return user;
 }
 

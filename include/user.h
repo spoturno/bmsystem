@@ -1,5 +1,8 @@
-#ifndef USER_H
-#define USER_H
+#ifndef _USER_H
+#define _USER_H
+
+#include "./utils.h"
+
 typedef struct _rep_user *User;
 
 //define operations for user
@@ -13,7 +16,7 @@ int generateId();
 /*
  * creates a new user with a given name, age, ...
  */
-User createUser(int age, char *name);
+User createUser(int age, ArregloChars name);
 
     
 /*
