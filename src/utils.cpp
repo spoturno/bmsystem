@@ -1,5 +1,4 @@
 #include "../include/utils.h"
-
 #include "stdio.h"
 
 nat leerNat() {

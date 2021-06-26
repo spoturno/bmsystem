@@ -16,7 +16,7 @@ int generateId();
 /*
  * creates a new user with a given name, age, ...
  */
-User createUser(int age, ArregloChars name);
+User createUser(nat age, ArregloChars name);
 
     
 /*

@@ -1,9 +1,10 @@
-#include "./include/user.h"
-#include "./include/utils.h"
+#include "include/user.h"
+#include "include/utils.h"
 
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
+#include <string.h>
 #include <assert.h>
 
 #define MAX_NAME 32
@@ -42,32 +43,6 @@ int getInputUser()
     return option;
 }
 
-void manageUserInput(int option)
-{
-
-    bool salir = false;
-    while (!salir)
-    {
-        if(option == 0){
-            salir = true;
-            printf("Hasta pronto!\n");
-        } else if (option == 1){
-            int age;
-            char name[MAX_NAME];
-            printf("Name:");
-            leerChars(name);
-            scanf("Age: %d",&age);
-            User user = createUser(age, name);
-            printUser(user);
-            printf("\n New user added \n");
-            salir = true;
-            
-        } else if(option == 2){ 
-        }
-
-
-    }
-}
 
 //shows all the current users
 void printUserBook(){
@@ -76,8 +51,36 @@ void printUserBook(){
 int main ()
 {
     initialScreen();
+
     int option = getInputUser();
-    manageUserInput(option);
+    bool salir = false;
+
+    while (!salir)
+    {
+        if(option == 0){
+            salir = true;
+            printf("Hasta pronto!\n");
+        } else if (option == 1){
+            nat age;
+            char name[MAX_NAME];
+
+            printf("Name:");
+            leerChars(name);
+            printf("Age:");
+            age = leerNat();
+            printf("\n");
+
+            User user = createUser(age, name);
+            printUser(user);
+            printf("\n New user added \n");
+            salir = true;
+            
+        } else if(option == 2){ 
+            printf("hello");
+            salir = true;
+        }
+    }
+    
     return 0;
 }
 

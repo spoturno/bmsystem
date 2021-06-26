@@ -5,7 +5,7 @@
 struct _rep_user{
     int id;
     ArregloChars name;
-    int age;
+    nat age;
 };
 
 int generateId()
@@ -14,7 +14,7 @@ int generateId()
     return 0;
 }
 
-User createUser(int age, ArregloChars name){
+User createUser(nat age, ArregloChars name){
     User user = new _rep_user;
     user->id = generateId();
     user->age = age;
@@ -39,6 +39,7 @@ int age(User user)
 
 void printUser(User user)
 {
+    printf("***** New User *****\n");
     printf("Name:%s\n", user->name);
     printf("Age: %d\n", user->age);
 }
