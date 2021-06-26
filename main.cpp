@@ -1,4 +1,3 @@
-#include "./main.h"
 #include "./include/user.h"
 #include "./include/utils.h"
 
@@ -9,11 +8,14 @@
 
 #define MAX_NAME 32
 
+typedef struct _rep_node *Node;
+
 struct _rep_node
 {
     int dato;        
     Node next;
 };
+
 
 void initialScreen()
 {
