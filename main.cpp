@@ -50,13 +50,14 @@ void printUserBook(){
 
 int main ()
 {
-    initialScreen();
 
-    int option = getInputUser();
     bool salir = false;
+    initialScreen();
 
     while (!salir)
     {
+        int option = getInputUser();
+
         if(option == 0){
             salir = true;
             printf("Hasta pronto!\n");
@@ -72,8 +73,8 @@ int main ()
 
             User user = createUser(age, name);
             printUser(user);
-            printf("\n New user added \n");
-            salir = true;
+            printf("\nNew user added \n");
+            salir = false;
             
         } else if(option == 2){ 
             printf("hello");
