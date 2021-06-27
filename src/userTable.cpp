@@ -26,12 +26,27 @@ Table createTable()
 {
     Table table = new _rep_table; 
     table->array = new User[MAX_USERS];
+    for (int i=0; i<MAX_USERS; i++)
+        table->array[i] = NULL;
     return table;
 }
 
 Table addUser(User user, Table table)
 {
-    return NULL;
+    int index = hashFunction(uid(user)); 
+    for (int i = 0; i<MAX_USERS; i++)
+    {
+        if(table->array[index] != NULL)    
+            index++;
+        else if(index == MAX_USERS)
+            printf("Error, not enough space available");
+        else 
+        {
+            table->array[index] = user;
+            break;
+        }
+    }
+    return table;
 }
 
 Table removeUser(User user, Table table)
@@ -43,6 +58,17 @@ bool contains(Table table, User user)
 {
     int hashed_key = hashFunction(uid(user));
     return (table->array[hashed_key] == NULL) ? true : false;
+}
+
+
+bool isEmptyBucket()
+{
+    return false;
+}
+
+bool isEmptyTable(Table table)
+{
+    return false;
 }
 
 /*
