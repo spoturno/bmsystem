@@ -6,24 +6,47 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAX_USERS 10
+#define MAX_USERS 13
 
 struct _rep_table{
-    UserTable user;
+    User *array;
 };
 
-UserTable createTable()
+int hashFunction(char *key)
 {
-    return NULL;
+    int hashVal = 0;
+    for(int i=0; i<sizeof(key); i++)
+    {
+        hashVal= 37 * hashVal + key[i];
+    }
+    return hashVal % MAX_USERS;
 }
-UserTable addUser(User user, UserTable table)
+
+Table createTable()
+{
+    Table table = new _rep_table; 
+    table->array = new User[MAX_USERS];
+    return table;
+}
+
+Table addUser(User user, Table table)
 {
     return NULL;
 }
 
-UserTable removeUser(User user, UserTable table)
+Table removeUser(User user, Table table)
 {
     return NULL;
 }
+
+bool contains(Table table, User user)
+{
+    int hashed_key = hashFunction(uid(user));
+    return (table->array[hashed_key] == NULL) ? true : false;
+}
+
+/*
+ * (a - '0') ~ ((int)a) - ((int)'0') = 4
+ * */
 
     

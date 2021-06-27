@@ -7,11 +7,6 @@ typedef struct _rep_user *User;
 
 //define operations for user
 
-/*
- * returns unique id implemented with hash function 
- */
-int generateId();
-
 
 /*
  * creates a new user with a given name, age, ...
@@ -28,7 +23,7 @@ void freeUser(User user);
 /*
  * returns user id
  */
-int uid(User user);
+ArregloChars uid(User user);
 
 /*
  * return user age

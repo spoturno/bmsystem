@@ -10,9 +10,9 @@
 typedef struct _rep_table *Table;
 
 /*
- * 
+ * hash function using the Hornes's rule  
  */
-int hashCode(int key);
+int hashFunction(char *key);
 
 
 /*
@@ -30,6 +30,13 @@ Table addUser(int key, Table table);
  * removes the a given user from the table
  */
 Table removeUser(User user, Table table); 
+
+
+/*
+ * returns true if user:User is in the table, else if
+ * user == NULL return false. using the hash function 
+ * */
+bool contains(Table table, User user);
 
 
 /*

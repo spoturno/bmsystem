@@ -1,5 +1,6 @@
 #include "include/user.h"
 #include "include/utils.h"
+#include "include/userTable.h"
 
 #include <stdio.h>
 #include <time.h>
@@ -70,6 +71,11 @@ int main ()
             printf("Age:");
             age = leerNat();
             printf("\n");
+
+            char persona[7] = "person";
+            int key = hashFunction(persona);
+            printf("%d", key);
+
 
             User user = createUser(age, name);
             printUser(user);

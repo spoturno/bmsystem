@@ -3,21 +3,15 @@
 #include <stdio.h>
 
 struct _rep_user{
-    int id;
+    ArregloChars key;
     ArregloChars name;
     nat age;
 };
 
-int generateId()
-{
-    //return id by hash function
-    return 0;
-}
-
-User createUser(nat age, ArregloChars name){
+User createUser(nat age, ArregloChars name, ArregloChars key){
     User user = new _rep_user;
-    user->id = generateId();
     user->age = age;
+    user->key = key;
     user->name = name;
     return user;
 }
@@ -27,9 +21,9 @@ void freeUser(User user)
     delete user;
 }
 
-int uid(User user)
+ArregloChars uid(User user)
 {
-    return user->id;
+    return user->key;
 }
 
 int age(User user)
@@ -42,4 +36,6 @@ void printUser(User user)
     printf("***** New User *****\n");
     printf("Name:%s\n", user->name);
     printf("Age: %d\n", user->age);
+    printf("Identification: %s\n", user->key);
+
 }
