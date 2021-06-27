@@ -8,8 +8,8 @@
 
 #define MAX_USERS 10
 
-struct _rep_user_table{
-   User *table[30]; 
+struct _rep_table{
+    UserTable user;
 };
 
 UserTable createTable()
