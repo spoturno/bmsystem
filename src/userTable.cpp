@@ -40,6 +40,7 @@ Table addUser(User user, Table table)
         if(table->count == MAX_USERS){
             printf("Error: User Table is Full\n");
             freeUser(user);
+            return table;
         }
        //insert directly
        table->array[index] = user;
@@ -48,13 +49,16 @@ Table addUser(User user, Table table)
         //case 1 - update the value
         if(strcmp(key(current_user), key(user)) == 0){
             table->array[index] = user;
-            return table;
         } else{
-            table = handleCollision(table, user);
-            return table;
+            table = handleCollision(user, table);
         }
     }
     return table;
+}
+
+Table handleCollision(User user, Table table)
+{
+    return NULL;
 }
 
 Table removeUser(User user, Table table)
@@ -84,15 +88,14 @@ bool isEmptyBucket(Table table, int index)
 bool isEmptyTable(Table table)
 {
     bool temp = false;
-    int i = 0;
-    while(i < MAX_USERS)
+    int i;
+    for(i=0; i<MAX_USERS; i++)
     {
         if(table->array[i] != NULL)
         {
             temp = false;
             break;
         }
-        i++;
     }
     if(i == MAX_USERS)
         temp = true;
