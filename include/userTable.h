@@ -53,6 +53,11 @@ bool isEmptyBuckey(Table table, int index);
 bool isEmptyTable(Table table);
 
 /*
+ * returns the cuatity of the users in the table
+ */
+nat numberOfUsers(Table table);
+
+/*
  * deallocate the hash table user 
  */
 void freeTable(Table table); 

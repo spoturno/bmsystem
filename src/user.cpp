@@ -6,7 +6,6 @@ struct _rep_user{
     ArregloChars id;
     ArregloChars name;
     nat age;
-    int key;
 };
 
 User createUser(nat age, ArregloChars name, ArregloChars id, int key){
@@ -14,7 +13,6 @@ User createUser(nat age, ArregloChars name, ArregloChars id, int key){
     user->age = age;
     user->id = id;
     user->name = name;
-    user->key = key;
     return user;
 }
 
@@ -23,14 +21,9 @@ void freeUser(User user)
     delete user;
 }
 
-ArregloChars uid(User user)
+ArregloChars key(User user)
 {
     return user->id;
-}
-
-int key(User user)
-{
-    return user->key;
 }
 
 int age(User user)

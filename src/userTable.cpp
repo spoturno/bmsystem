@@ -75,10 +75,14 @@ Table removeUser(User user, Table table)
 
 bool contains(Table table, User user)
 {
-    int hashed_key = hashFunction(uid(user));
+    int hashed_key = hashFunction(key(user));
     return (table->array[hashed_key] == NULL) ? true : false;
 }
 
+nat numberOfUsers(Table table)
+{
+    return table->count;
+}
 
 bool isEmptyBucket(Table table, int index)
 {
