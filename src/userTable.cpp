@@ -51,7 +51,14 @@ Table addUser(User user, Table table)
 
 Table removeUser(User user, Table table)
 {
-    return NULL;
+    int index = hashFunction(uid(user));
+    if(contains(table, user)){
+        freeUser(table->array[index]);
+        table->array[index] = NULL;
+    } else{
+        //shearch trough the array
+    }
+    return table;
 }
 
 bool contains(Table table, User user)

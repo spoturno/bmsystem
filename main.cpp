@@ -74,7 +74,7 @@ int main ()
 
             char persona[7] = "person";
             int key = hashFunction(persona);
-            printf("%d", key);
+            printf("%d\n", key);
 
 
             User user = createUser(age, name);
