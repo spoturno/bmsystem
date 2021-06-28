@@ -31,6 +31,12 @@ ArregloChars uid(User user);
 int age(User user);
 
 /*
+ * returns an unique key from the user
+ */
+ArregloChars key(User user);
+
+
+/*
  * prints user information
  */
 void printUser(User user);

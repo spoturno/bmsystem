@@ -3,16 +3,18 @@
 #include <stdio.h>
 
 struct _rep_user{
-    ArregloChars key;
+    ArregloChars id;
     ArregloChars name;
     nat age;
+    int key;
 };
 
-User createUser(nat age, ArregloChars name, ArregloChars key){
+User createUser(nat age, ArregloChars name, ArregloChars id, int key){
     User user = new _rep_user;
     user->age = age;
-    user->key = key;
+    user->id = id;
     user->name = name;
+    user->key = key;
     return user;
 }
 
@@ -22,6 +24,11 @@ void freeUser(User user)
 }
 
 ArregloChars uid(User user)
+{
+    return user->id;
+}
+
+int key(User user)
 {
     return user->key;
 }
@@ -34,8 +41,6 @@ int age(User user)
 void printUser(User user)
 {
     printf("\n***** New User *****\n");
-    printf("Name:%s\n", user->name);
-    printf("Age: %d\n", user->age);
-    printf("Identification: %s\n", user->key);
+    printf("Name:%s\n Age:%d\n, Id:%s\n", user->name, user->age, user->id);
 
 }

@@ -10,15 +10,15 @@
 
 struct _rep_table{
     User *array;
+    nat count;
 };
 
-int hashFunction(char *key)
+//the key is the user identification
+int hashFunction(char* key)
 {
     int hashVal = 0;
     for(int i=0; i<sizeof(key); i++)
-    {
-        hashVal= 37 * hashVal + key[i];
-    }
+       hashVal= 37 * hashVal + key[i];
     return hashVal % MAX_USERS;
 }
 
@@ -26,6 +26,7 @@ Table createTable()
 {
     Table table = new _rep_table; 
     table->array = new User[MAX_USERS];
+    table->count = 0;
     for (int i=0; i<MAX_USERS; i++)
         table->array[i] = NULL;
     return table;
@@ -34,16 +35,23 @@ Table createTable()
 Table addUser(User user, Table table)
 {
     int index = hashFunction(uid(user)); 
-    while(index <= MAX_USERS)
-    {
-        if(table->array[index] != NULL)    
-            index++;
-        else if(index == MAX_USERS)
-            printf("Error, not enough space available");
-        else 
-        {
+    User current_user = table->array[index];
+    if(current_user == NULL){
+        if(table->count == MAX_USERS){
+            printf("Error: User Table is Full\n");
+            freeUser(user);
+        }
+       //insert directly
+       table->array[index] = user;
+       table->count++;
+    } else{
+        //case 1 - update the value
+        if(strcmp(key(current_user), key(user)) == 0){
             table->array[index] = user;
-            break;
+            return table;
+        } else{
+            table = handleCollision(table, user);
+            return table;
         }
     }
     return table;

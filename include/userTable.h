@@ -25,6 +25,10 @@ Table createTable();
  */
 Table addUser(User user, Table table);
 
+/*
+ * handles collision using linear probing
+ */
+Table handleCollision(User user, Table table);
 
 /*
  * removes the a given user from the table
