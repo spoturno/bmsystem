@@ -91,6 +91,13 @@ bool isEmptyTable(Table table)
     return temp;
 }
 
+void freeTable(Table table)
+{
+    for(int i=0; i<MAX_USERS; i++)
+        freeUser(table->array[i]);
+    delete table;
+}
+
 /*
  * (a - '0') ~ ((int)a) - ((int)'0') = 4
  * */

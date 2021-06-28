@@ -9,6 +9,7 @@
 #include <assert.h>
 
 #define MAX_NAME 32
+#define MAX_UID 10
 
 typedef struct _rep_node *Node;
 
@@ -44,13 +45,9 @@ int getInputUser()
     return option;
 }
 
-
-//shows all the current users
-void printUserBook(){
-}
-
 int main ()
 {
+    Table users_table = createTable();
 
     bool salir = false;
     initialScreen();
@@ -61,23 +58,21 @@ int main ()
 
         if(option == 0){
             salir = true;
-            printf("Hasta pronto!\n");
+            printf("See you later!\n");
         } else if (option == 1){
             nat age;
             char name[MAX_NAME];
+            char uid[MAX_UID];
 
             printf("Name:");
             leerChars(name);
             printf("Age:");
             age = leerNat();
-            printf("\n");
+            printf("Identification:");
+            leerChars(uid);
 
-            char persona[7] = "person";
-            int key = hashFunction(persona);
-            printf("%d\n", key);
-
-
-            User user = createUser(age, name);
+            User user = createUser(age, name, uid);
+            users_table = addUser(user, users_table);
             printUser(user);
             printf("\nNew user added \n");
             salir = false;
@@ -87,13 +82,11 @@ int main ()
             salir = true;
         }
     }
+
+    freeTable(users_table);
     
     return 0;
 }
-
-
-
-
 
 
 

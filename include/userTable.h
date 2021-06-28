@@ -10,7 +10,7 @@
 typedef struct _rep_table *Table;
 
 /*
- * hash function using the Hornes's rule  
+ * hash function  
  */
 int hashFunction(char *key);
 
@@ -23,7 +23,7 @@ Table createTable();
 /*
  * insert an user:User into the table
  */
-Table addUser(int key, Table table);
+Table addUser(User user, Table table);
 
 
 /*
@@ -31,13 +31,22 @@ Table addUser(int key, Table table);
  */
 Table removeUser(User user, Table table); 
 
-
 /*
- * returns true if user:User is in the table, else if
- * user == NULL return false. using the hash function 
- * */
+ * returns true if user:User is in the table:Table
+ * NULL is not defined as a user.
+*/
 bool contains(Table table, User user);
 
+/*
+ * returns ture if table->array[index] == NULL
+ */
+bool isEmptyBuckey(Table table, int index);
+
+/*
+ * returns true if there's no user in the table, 
+ * NULL is not defined as a user.
+ */
+bool isEmptyTable(Table table);
 
 /*
  * deallocate the hash table user 

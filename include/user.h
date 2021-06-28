@@ -11,7 +11,7 @@ typedef struct _rep_user *User;
 /*
  * creates a new user with a given name, age, ...
  */
-User createUser(nat age, ArregloChars name);
+User createUser(nat age, ArregloChars name, ArregloChars key);
 
     
 /*

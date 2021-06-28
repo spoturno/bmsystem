@@ -33,7 +33,7 @@ int age(User user)
 
 void printUser(User user)
 {
-    printf("***** New User *****\n");
+    printf("\n***** New User *****\n");
     printf("Name:%s\n", user->name);
     printf("Age: %d\n", user->age);
     printf("Identification: %s\n", user->key);
