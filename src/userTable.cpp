@@ -68,14 +68,27 @@ bool contains(Table table, User user)
 }
 
 
-bool isEmptyBucket()
+bool isEmptyBucket(Table table, int index)
 {
-    return false;
+    return (table->array[index] == NULL) ? true : false;
 }
 
 bool isEmptyTable(Table table)
 {
-    return false;
+    bool temp = false;
+    int i = 0;
+    while(i < MAX_USERS)
+    {
+        if(table->array[i] != NULL)
+        {
+            temp = false;
+            break;
+        }
+        i++;
+    }
+    if(i == MAX_USERS)
+        temp = true;
+    return temp;
 }
 
 /*
