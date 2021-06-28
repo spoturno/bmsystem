@@ -53,4 +53,10 @@ bool isEmptyTable(Table table);
  */
 void freeTable(Table table); 
 
+/*
+ * print all the users inside the table 
+ */
+void printTable(Table table);
+
+
 #endif

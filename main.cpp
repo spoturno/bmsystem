@@ -80,7 +80,13 @@ int main ()
         } else if(option == 2){ 
             printf("hello");
             salir = true;
+        } else if(option == 3){
+            printf("\n");
+            printTable(users_table);
         }
+
+
+
     }
 
     freeTable(users_table);

@@ -98,6 +98,19 @@ void freeTable(Table table)
     delete table;
 }
 
+void printTable(Table table)
+{
+    printf("\n");
+    for(int i=0; i<MAX_USERS; i++)
+    {
+        if(table->array[i] != NULL)
+        {
+            printf("-----------------------------\n");
+            printUser(table->array[i]);
+        }
+    }
+}
+
 /*
  * (a - '0') ~ ((int)a) - ((int)'0') = 4
  * */
