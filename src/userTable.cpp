@@ -34,7 +34,7 @@ Table createTable()
 Table addUser(User user, Table table)
 {
     int index = hashFunction(uid(user)); 
-    for (int i = 0; i<MAX_USERS; i++)
+    while(index <= MAX_USERS)
     {
         if(table->array[index] != NULL)    
             index++;
