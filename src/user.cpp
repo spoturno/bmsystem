@@ -31,6 +31,11 @@ int age(User user)
     return user->age;
 }
 
+ArregloChars name(User user)
+{
+    return user->name;
+}
+
 void printUser(User user)
 {
     printf("\n***** New User *****\n");

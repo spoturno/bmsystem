@@ -31,6 +31,11 @@ ArregloChars uid(User user);
 int age(User user);
 
 /*
+ * returns user name
+ */
+ArregloChars name(User user);
+
+/*
  * returns an unique key from the user
  */
 ArregloChars key(User user);

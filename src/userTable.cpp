@@ -116,14 +116,15 @@ void freeTable(Table table)
 void printTable(Table table)
 {
     printf("\n");
+    printf("+-----------------+-----------------+------+\n");
+    printf("| Id              |     Name        | Age  |\n");
+    printf("+-----------------+-----------------+------+\n");
     for(int i=0; i<MAX_USERS; i++)
     {
         if(table->array[i] != NULL)
-        {
-            printf("-----------------------------\n");
-            printUser(table->array[i]);
-        }
+            printf("| %-15s | %-15s | %-4d |\n", key(table->array[i]), name(table->array[i]), age(table->array[i])); ;
     }
+    printf("+-----------------+-----------------+------+\n");
 }
 
 /*
