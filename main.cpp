@@ -11,30 +11,20 @@
 #define MAX_NAME 32
 #define MAX_UID 10
 
-typedef struct _rep_node *Node;
-
-struct _rep_node
-{
-    int dato;        
-    Node next;
-};
-
-
 void initialScreen()
 {
     printf("\e[1;1H\e[2J");
-    printf("\n|******************************************|");
-    printf("\n|          Bank Managment System           |");
-    printf("\n|******************************************|");
-    printf("\n|                                          |");
-    printf("\n|    [1] Insert new user                   |");
-    printf("\n|    [2] Manage Transaction                |");
-    printf("\n|    [3] User book                         |");
-    printf("\n|    [4] Transaction book                  |");
-    printf("\n|    [0] Exit                              |");
-    printf("\n|                                          |");
-    printf("\n|******************************************|");
-    printf("\n\n");
+    FILE * fp;
+    int c;
+    fp = fopen("new.txt", "r");
+    while(1)
+    {
+        c = fgetc(fp);
+        if(feof(fp))
+            break;
+        printf("%c", c);
+    }
+    fclose(fp);
 }
 
 int getInputUser()
@@ -84,9 +74,6 @@ int main ()
             printf("\n");
             printTable(users_table);
         }
-
-
-
     }
 
     freeTable(users_table);
