@@ -14,10 +14,10 @@ struct _rep_table{
 };
 
 //the key is the user identification
-int hashFunction(char* key)
+nat hashFunction(char* key)
 {
-    int hashVal = 0;
-    for(int i=0; i<sizeof(key); i++)
+    nat hashVal = 0;
+    for(nat i=0; i<sizeof(key); i++)
        hashVal= 37 * hashVal + key[i];
     return hashVal % MAX_USERS;
 }
@@ -34,7 +34,7 @@ Table createTable()
 
 Table addUser(User user, Table table)
 {
-    int index = hashFunction(uid(user)); 
+    int index = hashFunction(key(user)); 
     User current_user = table->array[index];
     if(current_user == NULL){
         if(table->count == MAX_USERS){
@@ -63,7 +63,7 @@ Table handleCollision(User user, Table table)
 
 Table removeUser(User user, Table table)
 {
-    int index = hashFunction(uid(user));
+    int index = hashFunction(key(user));
     if(contains(table, user)){
         freeUser(table->array[index]);
         table->array[index] = NULL;

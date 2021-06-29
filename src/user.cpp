@@ -8,7 +8,7 @@ struct _rep_user{
     nat age;
 };
 
-User createUser(nat age, ArregloChars name, ArregloChars id, int key){
+User createUser(nat age, ArregloChars name, ArregloChars id){
     User user = new _rep_user;
     user->age = age;
     user->id = id;
@@ -34,6 +34,6 @@ int age(User user)
 void printUser(User user)
 {
     printf("\n***** New User *****\n");
-    printf("Name:%s\n Age:%d\n, Id:%s\n", user->name, user->age, user->id);
+    printf("Name:%s\nAge:%d\nId:%s\n", user->name, user->age, user->id);
 
 }

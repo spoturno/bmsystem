@@ -73,6 +73,7 @@ int main ()
 
             User user = createUser(age, name, uid);
             users_table = addUser(user, users_table);
+            printf("key:%d", hashFunction(key(user)));
             printUser(user);
             printf("\nNew user added \n");
 

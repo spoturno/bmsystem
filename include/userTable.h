@@ -12,7 +12,7 @@ typedef struct _rep_table *Table;
 /*
  * hash function  
  */
-int hashFunction(char *key);
+nat hashFunction(char *key);
 
 
 /*
