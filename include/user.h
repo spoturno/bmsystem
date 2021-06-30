@@ -53,6 +53,12 @@ ArregloChars key(User user);
 
 
 /*
+ * User res returns : user->next = ref_to
+ */
+User refNextUser(User user, User ref_to);
+
+
+/*
  * prints user information
  */
 void printUserChain(User user);

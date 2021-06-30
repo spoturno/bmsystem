@@ -94,14 +94,13 @@ Table removeUser(User user, Table table)
             {
                 if(strcmp(key(user), key(current)) == 0)
                 {
+                    table->count--;
                     if(previous == NULL){
-                        //fix reference
-                        table->array[index] = next(current);
+                        table->array[index] = refNextUser(table->array[index], next(current));
                         freeUser(current);
-                        table->count--;
                         return table;
                     }else{
-                        
+                        //TODO        
                     }
 
                 }

@@ -1,6 +1,9 @@
 #include "../include/utils.h"
 #include "../include/user.h"
+
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 struct _rep_user{
     ArregloChars id;
@@ -74,3 +77,10 @@ void printUserChain(User user)
     temp = NULL;
     delete temp;
 }
+
+User refNextUser(User user, User ref_to)
+{
+    user->next = ref_to;
+    return user;
+}
+
