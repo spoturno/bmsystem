@@ -63,9 +63,7 @@ int main ()
 
             User user = createUser(age, name, uid);
             users_table = addUser(user, users_table);
-            printf("key:%d", hashFunction(key(user)));
-            printUser(user);
-            printf("\nNew user added \n");
+            printf("\nNew user added successfully.\n\n");
 
         } else if(option == 2){ 
             printf("hello");
@@ -76,6 +74,7 @@ int main ()
         }
     }
 
+    //delete [] also ArregloChars
     freeTable(users_table);
     
     return 0;
