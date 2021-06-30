@@ -49,7 +49,7 @@ Table addUser(User user, Table table)
         //case 1 - update the value
         if(strcmp(key(current_user), key(user)) == 0){
             table->array[index] = user;
-        } else{
+        } else{//case 2 - insert in chained users
             table = handleCollision(user, table, index);
         }
     }
@@ -65,14 +65,7 @@ Table handleCollision(User user, Table table, nat index)
 
 Table removeUser(User user, Table table)
 {
-    int index = hashFunction(key(user));
-    if(contains(table, user)){
-        freeUser(table->array[index]);
-        table->array[index] = NULL;
-    } else{
-        //shearch trough the array
-    }
-    return table;
+    return NULL;
 }
 
 bool contains(Table table, User user)
