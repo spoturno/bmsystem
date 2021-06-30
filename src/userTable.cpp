@@ -72,7 +72,14 @@ Table removeUser(User user, Table table)
 bool contains(Table table, User user)
 {
     int hashed_key = hashFunction(key(user));
-    return (table->array[hashed_key] == NULL) ? true : false;
+    User temp = table->array[hashed_key];
+    while(next(temp) != NULL)
+    {
+        if(temp == user)
+            return true;
+        temp = next(temp);
+    }
+    return (temp == user) ? true : false;
 }
 
 nat numberOfUsers(Table table)
