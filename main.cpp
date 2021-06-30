@@ -37,7 +37,7 @@ int getInputUser()
 
 User selectUser(Table table)
 {
-    ArregloChars id;
+    ArregloChars id = new char[MAX_UID];
     printTable(table);
     printf("Inser user Id:");
     leerChars(id);
@@ -85,7 +85,7 @@ int main ()
             User user = selectUser(users_table);
             if(user != NULL){
                 users_table = removeUser(user, users_table);
-                printf("User removed successfully");
+                printf("User removed successfully\n\n");
             } 
         }
     }
