@@ -42,6 +42,11 @@ Table removeUser(User user, Table table);
 bool contains(Table table, User user);
 
 /*
+ * search and returns the user with id.
+ */
+User searchUser(Table table, ArregloChars id);
+
+/*
  * returns ture if table->array[index] == NULL
  */
 bool isEmptyBuckey(Table table, int index);

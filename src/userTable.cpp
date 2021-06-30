@@ -127,6 +127,18 @@ bool contains(Table table, User user)
     return (temp == user) ? true : false;
 }
 
+User searchUser(Table table, ArregloChars id)
+{
+    nat index = hashFunction(id);
+    User temp = table->array[index];
+    while(next(temp) != NULL){
+        if(strcmp(key(temp), id) == 0)
+            return temp;
+        temp = next(temp);
+    }
+    return (strcmp(key(temp), id) == 0) ? temp : NULL;
+}
+
 nat numberOfUsers(Table table)
 {
     return table->count;

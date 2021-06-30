@@ -35,6 +35,15 @@ int getInputUser()
     return option;
 }
 
+User selectUser(Table table)
+{
+    ArregloChars id;
+    printTable(table);
+    printf("Inser user Id:");
+    leerChars(id);
+    return NULL;
+}
+
 int main ()
 {
     Table users_table = createTable();
@@ -72,7 +81,10 @@ int main ()
         } else if(option == 3){
             printf("\n");
             printTable(users_table);
+        } else if(option == 4){
+            User user = selectUser(users_table);
         }
+
     }
 
     //delete [] also ArregloChars
