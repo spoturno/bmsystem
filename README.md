@@ -10,6 +10,20 @@ This module represents the user type which is inside of the userTable. Each item
 ## utils
 This module contains some needed abstract types such as nat (unsigned int, natural integer) and ArregloChars wich aims to represent an array of char. Also special operations like readChars() which reads an ArregloChars. 
 
+# Prerequisites
+- [g++ compiler](https://gcc.gnu.org) or `gcc -xc++ -lstdc++ -shared-libgcc`
+- [Valgrind](https://valgrind.org) for memory managment 
+
+# Installation
+1. `git clone [https_or_ssh_link]`
+2. `cd bmsystem`
+3. `g++ -c src/user.cpp -o obj/user.o`
+4. `g++ -c src/utils.cpp -o obj/utils.o`
+5. `g++ -c src/userTable.cpp -o obj/userTable.o`
+6. `g++ -c src/main.cpp -o obj/main.o`
+7. `g++ obj/main.o obj/utils.o obj/user.o obj/userTable.o -o main`
+8. `./main`
+
 
 # Future functionalities
 - Makefile
