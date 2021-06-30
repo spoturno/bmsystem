@@ -43,28 +43,25 @@ User selectUser(Table table)
     leerChars(id);
     User user = searchUser(table, id);
     if(user == NULL)
-        printf("User with that Id doesn't exists");
+        printf("User with that Id doesn't exists\n");
     return (user == NULL) ? NULL : user;
 }
 
 int main ()
 {
     Table users_table = createTable();
-
     bool salir = false;
     initialScreen();
 
-    while (!salir)
-    {
+    while (!salir){
         int option = getInputUser();
-
         if(option == 0){
             salir = true;
             printf("See you later!\n");
         } else if (option == 1){
             nat age;
             ArregloChars name = new char[MAX_NAME];
-            ArregloChars uid = new char[MAX_UID];
+            ArregloChars uid = new char[MAX_UID]; 
 
             printf("Name:");
             leerChars(name);
@@ -86,13 +83,14 @@ int main ()
             printTable(users_table);
         } else if(option == 4){
             User user = selectUser(users_table);
+            if(user != NULL){
+                users_table = removeUser(user, users_table);
+                printf("User removed successfully");
+            } 
         }
-
     }
-
     //delete [] also ArregloChars
     freeTable(users_table);
-    
     return 0;
 }
 
