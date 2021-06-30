@@ -80,37 +80,30 @@ Table removeUser(User user, Table table)
         }else if(next(temp) != NULL)
             // collision exists
             if(strcmp(key(temp), key(user)) == 0){
-                //first element
-                //fix reference
                 table->array[index] = next(temp);
                 freeUser(temp);
                 table->count--;
                 return table;
             }
-            
             User current = next(temp);
             User previous = NULL; 
-            while(current)
-            {
-                if(strcmp(key(user), key(current)) == 0)
-                {
+            while(current){
+                if(strcmp(key(user), key(current)) == 0){
                     table->count--;
                     if(previous == NULL){
                         table->array[index] = refNextUser(table->array[index], next(current));
                         freeUser(current);
                         return table;
                     }else{
-                        //TODO        
+                        previous = refNextUser(previous, next(current));
+                        freeUser(current);
+                        return table;
                     }
-
                 }
                 previous = current;
                 current = next(current);
             }
-            
-
     }
-
     return table;
 }
 
