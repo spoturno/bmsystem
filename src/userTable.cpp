@@ -122,7 +122,7 @@ void printTable(Table table)
     for(int i=0; i<MAX_USERS; i++)
     {
         if(table->array[i] != NULL)
-            printf("| %-15s | %-15s | %-4d |\n", key(table->array[i]), name(table->array[i]), age(table->array[i])); ;
+            printf("| %-15s | %-15s | %-4d |\r\n", key(table->array[i]), name(table->array[i]), age(table->array[i])); ;
     }
     printf("+-----------------+-----------------+------+\n");
 }

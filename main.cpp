@@ -51,8 +51,8 @@ int main ()
             printf("See you later!\n");
         } else if (option == 1){
             nat age;
-            char name[MAX_NAME];
-            char uid[MAX_UID];
+            ArregloChars name = new char[MAX_NAME];
+            ArregloChars uid = new char[MAX_UID];
 
             printf("Name:");
             leerChars(name);
