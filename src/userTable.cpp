@@ -51,6 +51,7 @@ Table addUser(User user, Table table)
             table->array[index] = user;
         } else{//case 2 - insert in chained users
             table = handleCollision(user, table, index);
+            table->count++;
         }
     }
     return table;
