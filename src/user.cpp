@@ -63,9 +63,14 @@ ArregloChars name(User user)
     return user->name;
 }
 
-void printUser(User user)
+void printUserChain(User user)
 {
-    printf("\n***** New User *****\n");
-    printf("Name:%s\nAge:%d\nId:%s\n", user->name, user->age, user->id);
-
+    User temp = user;
+    while(temp->next != NULL)
+    {
+        temp = temp->next;
+        printf("| %-15s | %-15s | %-4d |\r\n", temp->id, temp->name, temp->age); 
+    }
+    temp = NULL;
+    delete temp;
 }

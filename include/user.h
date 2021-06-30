@@ -55,7 +55,7 @@ ArregloChars key(User user);
 /*
  * prints user information
  */
-void printUser(User user);
+void printUserChain(User user);
 
 #endif
 

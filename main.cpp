@@ -63,6 +63,7 @@ int main ()
 
             User user = createUser(age, name, uid);
             users_table = addUser(user, users_table);
+            printf("%d", hashFunction(key(user)));
             printf("\nNew user added successfully.\n\n");
 
         } else if(option == 2){ 
