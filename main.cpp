@@ -41,7 +41,10 @@ User selectUser(Table table)
     printTable(table);
     printf("Inser user Id:");
     leerChars(id);
-    return NULL;
+    User user = searchUser(table, id);
+    if(user == NULL)
+        printf("User with that Id doesn't exists");
+    return (user == NULL) ? NULL : user;
 }
 
 int main ()
