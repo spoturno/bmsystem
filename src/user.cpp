@@ -6,6 +6,7 @@ struct _rep_user{
     ArregloChars id;
     ArregloChars name;
     nat age;
+    User next;
 };
 
 User createUser(nat age, ArregloChars name, ArregloChars id){
@@ -13,11 +14,37 @@ User createUser(nat age, ArregloChars name, ArregloChars id){
     user->age = age;
     user->id = id;
     user->name = name;
+    user->next = NULL;
+    return user;
+}
+
+User next(User user)
+{
+    return user->next;
+}
+
+User insertNext(User user, User newUser)
+{
+    User temp = user;
+    while(user->next != NULL)
+    {
+        temp = user->next;
+    }
+    temp->next = newUser;
     return user;
 }
 
 void freeUser(User user)
 {
+    if(user != NULL)
+    {
+        while(user->next != NULL)
+        {
+            User temp = user;
+            user = user->next;
+            delete temp;
+        }
+    }
     delete user;
 }
 

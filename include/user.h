@@ -13,6 +13,17 @@ typedef struct _rep_user *User;
  */
 User createUser(nat age, ArregloChars name, ArregloChars key);
 
+/*
+ * it will return the next element in the linked user list of the index hash.
+ * Only if there were collitions this will work.
+ */
+User next(User user);
+
+/*
+ * chaning insertion on users chaning (collitions happens).
+ */
+User insertNext(User user, User newUser);
+
     
 /*
  * free user memory

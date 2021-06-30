@@ -28,7 +28,7 @@ Table addUser(User user, Table table);
 /*
  * handles collision using linear probing
  */
-Table handleCollision(User user, Table table);
+Table handleCollision(User user, Table table, nat index);
 
 /*
  * removes the a given user from the table

@@ -34,7 +34,7 @@ Table createTable()
 
 Table addUser(User user, Table table)
 {
-    int index = hashFunction(key(user)); 
+    nat index = hashFunction(key(user)); 
     User current_user = table->array[index];
     if(current_user == NULL){
         if(table->count == MAX_USERS){
@@ -50,15 +50,17 @@ Table addUser(User user, Table table)
         if(strcmp(key(current_user), key(user)) == 0){
             table->array[index] = user;
         } else{
-            table = handleCollision(user, table);
+            table = handleCollision(user, table, index);
         }
     }
     return table;
 }
 
-Table handleCollision(User user, Table table)
+Table handleCollision(User user, Table table, nat index)
 {
-    return NULL;
+    //search the last user node
+    table->array[index] = insertNext(table->array[index], user);
+    return table;
 }
 
 Table removeUser(User user, Table table)
