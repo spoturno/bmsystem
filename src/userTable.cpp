@@ -66,7 +66,53 @@ Table handleCollision(User user, Table table, nat index)
 
 Table removeUser(User user, Table table)
 {
-    return NULL;
+    nat index = hashFunction(key(user));
+    User temp = table->array[index];
+    if(temp == NULL)
+        return table;
+    else{
+        if(next(temp) == NULL && strcmp(key(temp), key(user)) == 0){
+            //no collision chain. Just remove temp.
+            table->array[index] = NULL;
+            freeUser(temp);
+            table->count--;
+            return table;
+        }else if(next(temp) != NULL)
+            // collision exists
+            if(strcmp(key(temp), key(user)) == 0){
+                //first element
+                //fix reference
+                table->array[index] = next(temp);
+                freeUser(temp);
+                table->count--;
+                return table;
+            }
+            
+            User current = next(temp);
+            User previous = NULL; 
+            while(current)
+            {
+                if(strcmp(key(user), key(current)) == 0)
+                {
+                    if(previous == NULL){
+                        //fix reference
+                        table->array[index] = next(current);
+                        freeUser(current);
+                        table->count--;
+                        return table;
+                    }else{
+                        
+                    }
+
+                }
+                previous = current;
+                current = next(current);
+            }
+            
+
+    }
+
+    return table;
 }
 
 bool contains(Table table, User user)
