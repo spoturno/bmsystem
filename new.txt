@@ -8,7 +8,7 @@
 |    [4] Remove user account               |
 |    [5] Transaction book                  |
 |    [6] CLEAR SCREEN                      |
-|    [7] Add balance                       |
+|    [7] Add balance to Account            |
 |    [0] Exit                              |
 |                                          |
 |******************************************|

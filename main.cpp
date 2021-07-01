@@ -87,6 +87,15 @@ int main (){
             } 
         } else if(option == 6){
             initialScreen();
+        } else if(option == 7){
+            User user = selectUser(users_table);
+            if(user != NULL){
+                int a_balance;
+                printf("Add balance:");
+                scanf("%d", &a_balance);
+                user = addBalance(user, a_balance);
+                printf("Balance added successfully\n\n");
+            }
         }
     }
     //delete [] also ArregloChars

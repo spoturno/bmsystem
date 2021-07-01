@@ -97,6 +97,11 @@ int balance(User user){
     return user->balance;
 }
 
+User addBalance(User user, int a_balance){
+    user->balance+=a_balance;
+    return user;
+}
+
 ArregloChars name(User user){
     return user->name;
 }

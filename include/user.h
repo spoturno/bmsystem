@@ -48,6 +48,11 @@ ArregloChars uid(User user);
 int balance(User user);
 
 /*
+ * adds a_balance to the current user balance. Could be a negative balance.
+ */
+User addBalance(User user ,int a_balance);
+
+/*
  * return user age
  */
 int age(User user);
