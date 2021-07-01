@@ -13,14 +13,16 @@ struct _rep_user{
     ArregloChars name;
     nat age;
     User next;
+    int balance;
 };
 
-User createUser(nat age, ArregloChars name, ArregloChars id){
+User createUser(nat age, ArregloChars name, ArregloChars id, int balance){
     User user = new _rep_user;
     user->age = age;
     user->id = id;
     user->name = name;
     user->next = NULL;
+    user->balance = balance;
     return user;
 }
 
@@ -31,7 +33,7 @@ User next(User user)
 
 User modifyUser(User user){
     nat option;
-    printf("[1] Id\n[2] Name\n[3] Age\n");
+    printf("[1] Id\n[2] Name\n[3] Age\n[4] Balance\n");
     printf("Select what you want to modify:");
     scanf("%d", &option);
     if(option == 1){
@@ -53,6 +55,13 @@ User modifyUser(User user){
         printf("Insert new Age:");
         new_age = leerNat();
         user->age = new_age;
+    } else if(option == 4){
+        printf("This will only change (replace) the current user balance\n");
+        printf("To add balance go option 7 in initial screen\n");
+        printf("New balance:");
+        int new_balance; 
+        scanf("%d", &new_balance);
+        user->balance = new_balance;
     }
     return user;
 }
