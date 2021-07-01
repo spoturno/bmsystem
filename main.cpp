@@ -77,8 +77,8 @@ int main ()
 
         } else if(option == 2){ 
             User user = selectUser(users_table);
-
-            salir = true;
+            user = modifyUser(user);
+            printf("User modified correctly\n\n");
         } else if(option == 3){
             printf("\n");
             printTable(users_table);

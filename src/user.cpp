@@ -51,7 +51,7 @@ User modifyUser(User user){
     } else if(option == 3){
         nat new_age;
         printf("Insert new Age:");
-        scanf("%d", &new_age);
+        new_age = leerNat();
         user->age = new_age;
     }
     return user;
@@ -61,9 +61,7 @@ User insertNext(User user, User newUser)
 {
     User temp = user;
     while(user->next != NULL)
-    {
         temp = user->next;
-    }
     temp->next = newUser;
     return user;
 }
