@@ -11,14 +11,12 @@
 #define MAX_NAME 32
 #define MAX_UID 10
 
-void initialScreen()
-{
+void initialScreen(){
     printf("\e[1;1H\e[2J");
     FILE * fp;
     int c;
     fp = fopen("new.txt", "r");
-    while(1)
-    {
+    while(1){
         c = fgetc(fp);
         if(feof(fp))
             break;
@@ -27,16 +25,14 @@ void initialScreen()
     fclose(fp);
 }
 
-int getInputUser()
-{
+int getInputUser(){
     int option;
     printf("Enter option:");
     scanf("%d", &option);
     return option;
 }
 
-User selectUser(Table table)
-{
+User selectUser(Table table){
     ArregloChars id = new char[MAX_UID];
     printTable(table);
     printf("Inser user Id:");
@@ -47,8 +43,7 @@ User selectUser(Table table)
     return (user == NULL) ? NULL : user;
 }
 
-int main ()
-{
+int main (){
     Table users_table = createTable();
     bool salir = false;
     initialScreen();
@@ -72,8 +67,7 @@ int main ()
 
             User user = createUser(age, name, uid);
             users_table = addUser(user, users_table);
-            printf("%d", hashFunction(key(user)));
-            printf("\nNew user added successfully.\n\n");
+            printf("\n-New user added successfully-\n\n");
 
         } else if(option == 2){ 
             User user = selectUser(users_table);

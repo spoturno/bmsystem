@@ -14,16 +14,14 @@ struct _rep_table{
 };
 
 //the key is the user identification
-nat hashFunction(char* key)
-{
+nat hashFunction(char* key){
     nat hashVal = 0;
     for(nat i=0; i<sizeof(key); i++)
        hashVal= 37 * hashVal + key[i];
     return hashVal % MAX_USERS;
 }
 
-Table createTable()
-{
+Table createTable(){
     Table table = new _rep_table; 
     table->array = new User[MAX_USERS];
     table->count = 0;
@@ -32,8 +30,7 @@ Table createTable()
     return table;
 }
 
-Table addUser(User user, Table table)
-{
+Table addUser(User user, Table table){
     nat index = hashFunction(key(user)); 
     User current_user = table->array[index];
     if(current_user == NULL){
@@ -57,15 +54,13 @@ Table addUser(User user, Table table)
     return table;
 }
 
-Table handleCollision(User user, Table table, nat index)
-{
+Table handleCollision(User user, Table table, nat index){
     //search the last user node
     table->array[index] = insertNext(table->array[index], user);
     return table;
 }
 
-Table removeUser(User user, Table table)
-{
+Table removeUser(User user, Table table){
     nat index = hashFunction(key(user));
     User temp = table->array[index];
     if(temp == NULL)
@@ -107,12 +102,10 @@ Table removeUser(User user, Table table)
     return table;
 }
 
-bool contains(Table table, User user)
-{
+bool contains(Table table, User user){
     int hashed_key = hashFunction(key(user));
     User temp = table->array[hashed_key];
-    while(next(temp) != NULL)
-    {
+    while(next(temp) != NULL){
         if(temp == user)
             return true;
         temp = next(temp);
@@ -120,8 +113,7 @@ bool contains(Table table, User user)
     return (temp == user) ? true : false;
 }
 
-User searchUser(Table table, ArregloChars id)
-{
+User searchUser(Table table, ArregloChars id){
     nat index = hashFunction(id);
     User temp = table->array[index];
     while(next(temp) != NULL){
@@ -132,24 +124,19 @@ User searchUser(Table table, ArregloChars id)
     return (strcmp(key(temp), id) == 0) ? temp : NULL;
 }
 
-nat numberOfUsers(Table table)
-{
+nat numberOfUsers(Table table){
     return table->count;
 }
 
-bool isEmptyBucket(Table table, int index)
-{
+bool isEmptyBucket(Table table, int index){
     return (table->array[index] == NULL) ? true : false;
 }
 
-bool isEmptyTable(Table table)
-{
+bool isEmptyTable(Table table){
     bool temp = false;
     int i;
-    for(i=0; i<MAX_USERS; i++)
-    {
-        if(table->array[i] != NULL)
-        {
+    for(i=0; i<MAX_USERS; i++){
+        if(table->array[i] != NULL){
             temp = false;
             break;
         }
@@ -159,23 +146,19 @@ bool isEmptyTable(Table table)
     return temp;
 }
 
-void freeTable(Table table)
-{
+void freeTable(Table table){
     for(int i=0; i<MAX_USERS; i++)
         freeUser(table->array[i]);
     delete table;
 }
 
-void printTable(Table table)
-{
+void printTable(Table table){
     printf("\n");
     printf("+-----------------+-----------------+------+\n");
     printf("| Id              |     Name        | Age  |\n");
     printf("+-----------------+-----------------+------+\n");
-    for(int i=0; i<MAX_USERS; i++)
-    {
-        if(table->array[i] != NULL)
-        {
+    for(int i=0; i<MAX_USERS; i++){
+        if(table->array[i] != NULL){
             printf("| %-15s | %-15s | %-4d |\r\n", key(table->array[i]), name(table->array[i]), age(table->array[i])); ;
             printUserChain(table->array[i]);
         }

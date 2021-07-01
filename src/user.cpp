@@ -57,8 +57,7 @@ User modifyUser(User user){
     return user;
 }
 
-User insertNext(User user, User newUser)
-{
+User insertNext(User user, User newUser){
     User temp = user;
     while(user->next != NULL)
         temp = user->next;
@@ -66,12 +65,9 @@ User insertNext(User user, User newUser)
     return user;
 }
 
-void freeUser(User user)
-{
-    if(user != NULL)
-    {
-        while(user->next != NULL)
-        {
+void freeUser(User user){
+    if(user != NULL){
+        while(user->next != NULL){
             User temp = user;
             user = user->next;
             delete temp;
@@ -80,26 +76,21 @@ void freeUser(User user)
     delete user;
 }
 
-ArregloChars key(User user)
-{
+ArregloChars key(User user){
     return user->id;
 }
 
-int age(User user)
-{
+int age(User user){
     return user->age;
 }
 
-ArregloChars name(User user)
-{
+ArregloChars name(User user){
     return user->name;
 }
 
-void printUserChain(User user)
-{
+void printUserChain(User user){
     User temp = user;
-    while(temp->next != NULL)
-    {
+    while(temp->next != NULL){
         temp = temp->next;
         printf("| %-15s | %-15s | %-4d |\r\n", temp->id, temp->name, temp->age); 
     }
@@ -107,8 +98,7 @@ void printUserChain(User user)
     delete temp;
 }
 
-User refNextUser(User user, User ref_to)
-{
+User refNextUser(User user, User ref_to){
     user->next = ref_to;
     return user;
 }
