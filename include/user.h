@@ -11,7 +11,7 @@ typedef struct _rep_user *User;
 /*
  * creates a new user with a given name, age, ...
  */
-User createUser(nat age, ArregloChars name, ArregloChars key);
+User createUser(nat age, ArregloChars name, ArregloChars key, int balance);
 
 /*
  * it will return the next element in the linked user list of the index hash.
@@ -41,6 +41,11 @@ void freeUser(User user);
  * returns user id
  */
 ArregloChars uid(User user);
+
+/*
+ * returns user balance
+ */
+int balance(User user);
 
 /*
  * return user age

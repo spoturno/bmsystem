@@ -93,6 +93,10 @@ int age(User user){
     return user->age;
 }
 
+int balance(User user){
+    return user->balance;
+}
+
 ArregloChars name(User user){
     return user->name;
 }
@@ -101,7 +105,7 @@ void printUserChain(User user){
     User temp = user;
     while(temp->next != NULL){
         temp = temp->next;
-        printf("| %-15s | %-15s | %-4d |\r\n", temp->id, temp->name, temp->age); 
+        printf("| %-15s | %-15s | %-4d | $%-8d |\r\n", temp->id, temp->name, temp->age, temp->balance); 
     }
     temp = NULL;
     delete temp;
