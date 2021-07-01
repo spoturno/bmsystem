@@ -88,6 +88,8 @@ int main ()
                 users_table = removeUser(user, users_table);
                 printf("User removed successfully\n\n");
             } 
+        } else if(option == 6){
+            initialScreen();
         }
     }
     //delete [] also ArregloChars
