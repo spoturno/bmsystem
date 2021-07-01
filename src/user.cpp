@@ -5,6 +5,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define MAX_UID 10
+#define MAX_NAME 32
+
 struct _rep_user{
     ArregloChars id;
     ArregloChars name;
@@ -24,6 +27,34 @@ User createUser(nat age, ArregloChars name, ArregloChars id){
 User next(User user)
 {
     return user->next;
+}
+
+User modifyUser(User user){
+    nat option;
+    printf("[1] Id\n[2] Name\n[3] Age\n");
+    printf("Select what you want to modify:");
+    scanf("%d", &option);
+    if(option == 1){
+        ArregloChars new_id = new char[MAX_UID];
+        printf("Inser new Id:");
+        leerChars(new_id);
+        ArregloChars temp = user->id;
+        user->id = new_id;
+        delete[] temp;
+    } else if(option == 2){
+        ArregloChars new_name = new char[MAX_NAME];
+        printf("Insert new Name");
+        leerChars(new_name);
+        ArregloChars temp = user->name;
+        user->name = new_name;
+        delete[] temp;
+    } else if(option == 3){
+        nat new_age;
+        printf("Insert new Age:");
+        scanf("%d", &new_age);
+        user->age = new_age;
+    }
+    return user;
 }
 
 User insertNext(User user, User newUser)

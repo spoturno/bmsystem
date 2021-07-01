@@ -24,6 +24,12 @@ User next(User user);
  */
 User insertNext(User user, User newUser);
 
+
+/*
+ * modify the user:User selected data from the input.  
+ */
+User modifyUser(User user);
+
     
 /*
  * free user memory

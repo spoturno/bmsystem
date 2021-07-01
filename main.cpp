@@ -76,7 +76,8 @@ int main ()
             printf("\nNew user added successfully.\n\n");
 
         } else if(option == 2){ 
-            printf("hello");
+            User user = selectUser(users_table);
+
             salir = true;
         } else if(option == 3){
             printf("\n");
