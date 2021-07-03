@@ -1,6 +1,10 @@
-# Bank Managmente System
+# Bank Management System
 This is a bank managment system made with c and some of c++ (new & delete). The goal of this project is work with Abstract Data Types (Hash Table, AVL trees, Linked List).
 
+- **src/** (source code of each module)
+- **tests/** (some functions that test and showcase src/ code)
+- **include/** (header files for src/ code)
+- **obj/** (object files and executbles live here)
 
 # Modules
 ## userTable
@@ -36,6 +40,7 @@ When executing the program the first thing that is found is the initial screen w
 - CLEAR SCREEN [6]
 - Add balance to account [7]
 - Exit [0]
+
 By inserting a new user account you will be requested with some user information such as Name, Identification, Age, Balance (TODO: More formal data). Once you filled each blank, your new user will be added dynamically and correctly. If you choose to update user information you'll be asked to select the user identification of the user you want to select (table of users will be shown), once selected you can change a single entry of data of one user (Notice that this will only replace the current value of the data that you want to change).
 After that if you want to remove a user, same as before, you will be asked to select the user by his id, once did that the user is removed from the table of users (userTable) and also his memory is free'd. 
 Transaction book (TODO).
