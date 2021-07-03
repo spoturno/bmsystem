@@ -24,6 +24,20 @@ This module contains some needed abstract types such as nat (unsigned int, natur
 7. `g++ obj/main.o obj/utils.o obj/user.o obj/userTable.o -o main`
 8. `./main`
 
+# Usage
+When exucutin the program the first thing that is found is the initial screen where you should choose on of the following options: 
+- Insert new user account [1]
+- Update user information [2]
+- User book [3]
+- Remove user account [4]
+- Trancation book [5]
+- CLEAR SCREEN [6]
+- Add balance to account [7]
+- Exit [0]
+By inserting a new user account you will be requested with some user information such as Name, Identification, Age, Balance (TODO: More formal data). Once you filled each balck your new user will be added dynamically correct. If you choose to update user information you'll be asked to select the user identification of the user you want to select (table of users will be shown), once selected you can change a single entry of data of one user (Notice that this will only replace the current value of the data that you want to change).
+After that if you want to remve a user, same as before, you will be asked to select the user by his id, once did that the user is removed from the table of users (userTable) and also his memory is free'd. 
+Transaction book (TODO).
+Clear Screen just clears the screen and show again the inital screen to make it cleaner. This also could be implemented reading and writing the stream, selecting the lines that are not supossed to be shown. Finally to exit the program just input `0` on the stream. 
 
 # Future functionalities
 - Makefile
