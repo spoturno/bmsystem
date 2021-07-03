@@ -2,6 +2,7 @@
 #define _USER_H
 
 #include "./utils.h"
+#include <time.h>
 
 typedef struct _rep_user *User;
 
@@ -78,6 +79,12 @@ User refNextUser(User user, User ref_to);
  * prints user information
  */
 void printUserChain(User user);
+
+
+/*
+ * returns the first time user was insert on the table
+ */
+time_t user_since(User user);
 
 #endif
 

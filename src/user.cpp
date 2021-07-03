@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 #define MAX_UID 10
 #define MAX_NAME 32
@@ -13,6 +14,7 @@ struct _rep_user{
     ArregloChars name;
     nat age;
     User next;
+    time_t time;
     int balance;
 };
 
