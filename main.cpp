@@ -56,7 +56,7 @@ int main (){
         } else if (option == 1){
             nat age;
             int balance;
-            char name[MAX_NAME];
+            ArregloChars name = new char[MAX_NAME];
             char temp;
             ArregloChars uid = new char[MAX_UID]; 
 
