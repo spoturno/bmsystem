@@ -21,4 +21,4 @@ double leerDouble() {
 
 void leerChars(ArregloChars cs) { scanf("%s", cs); }
 
-void leerRestoLinea(ArregloChars cs) { scanf("%[^\n]", cs); }
+void leerRestoLinea(ArregloChars cs) { scanf("%[^\n]s", cs); }
