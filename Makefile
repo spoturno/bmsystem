@@ -1,3 +1,7 @@
+all: main
+
+.PHONY: all clean testing
+
 MODULOS = utils user userTable
 
 # directories
@@ -36,4 +40,12 @@ $(EXE):$(ODIR)/$(MAIN).o $(OS)
 	@printf 'Compiling and linking $(@) \n ;' \
 	$(LD) $(CCFLAGS) $^ -o $@
 
+# definir luego $LIB
+clean_bin:
+	@rm -f $(EXE) $(ODIR)/$(MAIN).o $(OS)
 
+clean_test:
+	@rm -f $(EXE) $(ODIR)/$(MAIN).o $(OS) $(LIB)
+
+clean: clean_test clean_bin
+	@rm -f *~ $(HDIR)/*~ $(CPPDIR)/*~ 
