@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 #define MAX_USERS 13
 
@@ -155,11 +156,11 @@ void freeTable(Table table){
 void printTable(Table table){
     printf("\n");
     printf("+-----------------+-----------------+------+-----------+-----------+\n");
-    printf("| Id              | Name            | Age  | Balance   |\n");
+    printf("| Id              | Name            | Age  | Balance   | Since     |\n");
     printf("+-----------------+-----------------+------+-----------+-----------+\n");
     for(int i=0; i<MAX_USERS; i++){
-        struct tm * date = userAdmissionDate(table->array[i]);
         if(table->array[i] != NULL){
+            struct tm * date = userAdmissionDate(table->array[i]);
             printf("| %-15s | %-15s | %-4d | $%-8d | %d/%d/%d |\r\n", key(table->array[i]), name(table->array[i]), age(table->array[i]), balance(table->array[i]), date->tm_yday, date->tm_mon, date->tm_year); 
             printUserChain(table->array[i]);
         }
