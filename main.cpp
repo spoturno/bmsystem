@@ -57,16 +57,19 @@ int main (){
             nat age;
             int balance;
             ArregloChars name = new char[MAX_NAME];
+            char temp;
             ArregloChars uid = new char[MAX_UID]; 
 
             printf("Name:");
-            leerChars(name);
+            scanf("%c", &temp);
+            scanf("%[^\n]", name);
             printf("Age:");
             age = leerNat();
             printf("Identification:");
             leerChars(uid);
             printf("Account balance:");
             scanf("%d", &balance);
+            printf("\n");
 
             User user = createUser(age, name, uid, balance);
             users_table = addUser(user, users_table);
