@@ -68,6 +68,11 @@ ArregloChars name(User user);
  */
 ArregloChars key(User user);
 
+/*
+ * returns the time when user got logged in
+ */
+time_t userTime(User user);
+
 
 /*
  * User res returns : user->next = ref_to

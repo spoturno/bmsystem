@@ -1,5 +1,6 @@
 #include "../include/utils.h"
 #include "../include/user.h"
+#include "../include/timer.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -14,7 +15,7 @@ struct _rep_user{
     ArregloChars name;
     nat age;
     User next;
-    time_t time;
+    struct tm *time;
     int balance;
 };
 
@@ -25,6 +26,7 @@ User createUser(nat age, ArregloChars name, ArregloChars id, int balance){
     user->name = name;
     user->next = NULL;
     user->balance = balance;
+    user->time = getCurrentTime();
     return user;
 }
 
@@ -106,6 +108,10 @@ User addBalance(User user, int a_balance){
 
 ArregloChars name(User user){
     return user->name;
+}
+
+time_t userTime(User user){
+    return user->time;
 }
 
 void printUserChain(User user){
