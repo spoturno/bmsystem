@@ -1,9 +1,11 @@
 #include "../include/utils.h"
 #include "../include/user.h"
+#include "../include/timer.h"
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 #define MAX_UID 10
 #define MAX_NAME 32
@@ -13,6 +15,7 @@ struct _rep_user{
     ArregloChars name;
     nat age;
     User next;
+    struct tm *time;
     int balance;
 };
 
@@ -23,6 +26,7 @@ User createUser(nat age, ArregloChars name, ArregloChars id, int balance){
     user->name = name;
     user->next = NULL;
     user->balance = balance;
+    user->time = getCurrentTime();
     return user;
 }
 
@@ -106,11 +110,16 @@ ArregloChars name(User user){
     return user->name;
 }
 
+struct tm * userAdmissionDate(User user){
+    return user->time;
+}
+
+
 void printUserChain(User user){
     User temp = user;
     while(temp->next != NULL){
         temp = temp->next;
-        printf("| %-15s | %-15s | %-4d | $%-8d |\r\n", temp->id, temp->name, temp->age, temp->balance); 
+        printf("| %-15s | %-15s | %-4d | $%-8d | %d/%d/%d |\r\n", temp->id, temp->name, temp->age, temp->balance, temp->time->tm_yday, temp->time->tm_mon, temp->time->tm_year); 
     }
     temp = NULL;
     delete temp;
