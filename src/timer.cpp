@@ -11,4 +11,3 @@ struct tm* getCurrentTime(){
     return info;
 }
 
-

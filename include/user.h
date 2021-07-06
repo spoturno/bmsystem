@@ -71,7 +71,7 @@ ArregloChars key(User user);
 /*
  * returns the time when user got logged in
  */
-time_t userTime(User user);
+struct tm * userAdmissionDate(User user);
 
 
 /*

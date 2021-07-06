@@ -110,15 +110,16 @@ ArregloChars name(User user){
     return user->name;
 }
 
-time_t userTime(User user){
+struct tm * userAdmissionDate(User user){
     return user->time;
 }
+
 
 void printUserChain(User user){
     User temp = user;
     while(temp->next != NULL){
         temp = temp->next;
-        printf("| %-15s | %-15s | %-4d | $%-8d |\r\n", temp->id, temp->name, temp->age, temp->balance); 
+        printf("| %-15s | %-15s | %-4d | $%-8d | %d/%d/%d |\r\n", temp->id, temp->name, temp->age, temp->balance, temp->time->tm_yday, temp->time->tm_mon, temp->time->tm_year); 
     }
     temp = NULL;
     delete temp;
