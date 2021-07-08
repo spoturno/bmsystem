@@ -17,7 +17,7 @@ nat charToAsciiValue(char a);
 /*
  * convert the value (decimal) into his binary [1,0,1,1]
  */
-ArregloNats natToBinary(nat value);
+int * natToBinary(int value);
 
 
 //meaby a function of union of arrays.
