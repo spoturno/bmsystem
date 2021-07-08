@@ -24,4 +24,18 @@ int * natToBinary(int value){
     return res;
 }
 
+int * unionOfArray(int *ar_1, int *ar_2){
+    static int res[sizeof(ar_1) + sizeof(ar_2)];
+    int i, j;
+    for(i = 0; i<sizeof(ar_1); i++){
+        res[i] = ar_1[i];
+    }
+    for(j = 0;  j< sizeof(ar_2); j++){
+        res[i] = ar_2[j];
+        i++;
+    }
+    return res;
+}
+
+
 

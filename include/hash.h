@@ -19,6 +19,11 @@ nat charToAsciiValue(char a);
  */
 int * natToBinary(int value);
 
+/*
+ * returns the union of ar_1[] and ar_2[]
+ */
+int * unionOfArray(int ar_1[], int ar_2[]);
+
 
 //meaby a function of union of arrays.
 
