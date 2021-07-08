@@ -6,7 +6,13 @@
 
 
 ArregloChars shaHashing(ArregloChars msg){
-
+/*
+ * 1 - Covert each char of msg into decimal ascii code
+ * 2 - Convert each decimal code into binary code
+ * 3 - Store all the binaries together in array
+ * 4 - convert to 512 bits array (sha-256)
+ * 5 - 
+ * */
     return msg;
 }
 
