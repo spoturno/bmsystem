@@ -11,7 +11,7 @@ ArregloChars shaHashing(ArregloChars msg){
  * 2 - Convert each decimal code into binary code
  * 3 - Store all the binaries together in array
  * 4 - convert to 512 bits array (sha-256)
- * 5 - 
+ * 5 - create message shcedule
  * */
     return msg;
 }
@@ -42,6 +42,7 @@ int * unionOfArray(int *ar_1, int *ar_2){
     }
     return res;
 }
+
 
 
 
