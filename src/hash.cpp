@@ -22,6 +22,7 @@ nat charToAsciiValue(char a)
 }
 
 int * natToBinary(int value){
+    // fix 
     static int res[10];
     for(nat i=0;value>0;i++){
         res[i] = value%2;
@@ -39,6 +40,25 @@ int * unionOfArray(int *ar_1, int *ar_2){
     for(j = 0;  j< sizeof(ar_2); j++){
         res[i] = ar_2[j];
         i++;
+    }
+    return res;
+}
+
+int *paddingMessage(int *msg){
+    int lenght = sizeof(msg);
+    int * lenghtInBinary = natToBinary(lenght);
+    static int res[512];
+    // calling unionOfArray we loose the index
+    for (i=0; i < 512; i++){
+        if(i == lenght)
+            res[i] = 1;
+        if(i > lenght){
+            if(i >= 512 - lenght -1){
+                res[i] = lenghtInBinary[i];
+            }else
+                res[i] = 0;    
+        }else
+            res[i] = msg[i];
     }
     return res;
 }
