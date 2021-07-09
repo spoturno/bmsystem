@@ -4,7 +4,14 @@
 #include "../include/utils.h"
 #include "../include/hash.h"
 
-
+/*   void printFileContents();
+*    int calcFileSize();
+*    void endianCheckPrint();
+*    _Bool endianCheck();
+*    int fillMessageBlock();
+*    void calculateHash(FILE *file);
+*    int nextMessageBlock(FILE *file, union messageBlock *msgBlock, enum status *state, __uint64_t *numBits);
+*/
 
 ArregloChars shaHashing(ArregloChars msg){
 /*
