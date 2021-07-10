@@ -24,6 +24,10 @@ int * natToBinary(int value);
  */
 int * unionOfArray(int ar_1[], int ar_2[]);
 
+/*
+ * returns the message with the correct padding acording with the sha-256 algorithm 
+*/
+int *paddingMessage(int *msg);
 
 //meaby a function of union of arrays.
 

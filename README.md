@@ -6,21 +6,23 @@ This is a bank managment system made with c and some of c++ (new & delete). The 
 - **include/** (header files for src/ code)
 - **obj/** (object files and executbles live here)
 
-# Modules
-## userTable
+## Modules
+### userTable
 This module represents the list of the users into the system. They're dynamically added to the userTable (hash table). Some operations implemented are: addUser() (O(1) on average), removeUser() (O(n) in wors case), contains() (O(1)).
-## user
+### user
 This module represents the user type which is inside of the userTable. Each item on the hash table is a user with his respective operations (see on user.h). En each index of the table, if a collision occurs new User is added as a linked list (if id of the new user is different of the existing one); This is called chaning in solving collisions in hash tables.
-## utils
+### utils
 This module contains some needed abstract types such as nat (unsigned int, natural integer) and ArregloChars wich aims to represent an array of char. Also special operations like readChars() which reads an ArregloChars. 
-## timer
+### timer
 This module includes all the operations related to [date and time gnu]('https://www.gnu.org/software/libc/manual/html_node/Date-and-Time.html')
+### hash
+This module includes all the operations related to hashing a string with the sha-256 algorithm. It will substitute the current hash function of userTable module. Also It'll work for any transaction algorithm in the future.
 
-# Prerequisites
+## Prerequisites
 - [g++ compiler](https://gcc.gnu.org) or `gcc -xc++ -lstdc++ -shared-libgcc`
 - [Valgrind](https://valgrind.org) for memory managment 
 
-# Installation
+## Installation
 1. `git clone [https_or_ssh_link]`
 2. `cd bmsystem`
 3. `g++ -c src/user.cpp -o obj/user.o`
@@ -30,7 +32,7 @@ This module includes all the operations related to [date and time gnu]('https://
 7. `g++ obj/main.o obj/utils.o obj/user.o obj/userTable.o -o main`
 8. `./main`
 
-# Usage
+## Usage
 When executing the program the first thing that is found is the initial screen where you should choose on of the following options: 
 - Insert new user account [1]
 - Update user information [2]
@@ -46,10 +48,12 @@ After that if you want to remove a user, same as before, you will be asked to se
 Transaction book (TODO).
 Clear Screen just clears the screen and show again the inital screen to make it cleaner. This also could be implemented reading and writing the stream, selecting the lines that are not supposed to be shown. Finally to exit the program just input `0` on the stream.
 
-# Future functionalities
+## Future functionalities
 - Makefile
 - help section
 - store data in text file
 - store data in mySQL databse
 - invalid_input_error()
 
+## Contributing
+Have you spotted a typo, would you like to fix a link, or is there something you’d like to suggest? Be welcome to open a pull request!
