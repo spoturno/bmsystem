@@ -57,3 +57,9 @@ Clear Screen just clears the screen and show again the inital screen to make it 
 
 ## Contributing
 Have you spotted a typo, would you like to fix a link, or is there something you’d like to suggest? Be welcome to open a pull request!
+
+## Resources
+- https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf
+- https://www.geeksforgeeks.org/left-shift-right-shift-operators-c-cpp/
+- https://www.geeksforgeeks.org/little-and-big-endian-mystery/
+- https://stackoverflow.com/questions/19275955/convert-little-endian-to-big-endian
