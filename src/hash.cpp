@@ -1,18 +1,22 @@
+ /*************************************************
+ * Filename: hash.cpp
+ * Author: Tomas Spoturno
+ * Copyright: 
+ * Disclaimer: This code is presented "as is" without any guarantees.
+ * Details: Implementation of sha-256 algorithm. sha-256 is one of the
+ *          three algorithms of sha-2 specification. Algorithm specification
+ *          can be found on README.md
+ *************************************************/
+
 #include <stdio.h>
 #include <stdlib.h>
-#include <inttypes.h>
-
-#include "../include/utils.h"
+#include <memory.h>
 #include "../include/hash.h"
 
-#define byteSwap32(x) (((x) >> 24) | (((x)&0x00FF0000) >> 8) | (((x)&0x0000FF00) << 8) | ((x) << 24))
-#define byteSwap64(x)                                                   \
-    ((((x) >> 56) & 0x00000000000000FF) | (((x) >> 40) & 0x000000000000FF00) | \
-	 (((x) >> 24) & 0x0000000000FF0000) | (((x) >> 8) & 0x00000000FF000000) |  \
-	 (((x) << 8) & 0x000000FF00000000) | (((x) << 24) & 0x0000FF0000000000) |  \
-	 (((x) << 40) & 0x00FF000000000000) | (((x) << 56) & 0xFF00000000000000))
 
-__uint32_t K[] =
+
+
+static const WORD K[64] =
 {
     0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 
     0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,
@@ -31,19 +35,6 @@ __uint32_t K[] =
     0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208,
     0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2
 };
-
-//represent a message block
-union msgBlock
-{
-    __uint8_t e[64];
-};
-
-//controls the state of the program
-enum status{READ, PAD0, PAD1, FINISH};
-
-#define MAXCHAR 100000
-
-
 
 
 //==== IMPLEMENT THIS ====
