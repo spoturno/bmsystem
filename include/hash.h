@@ -18,6 +18,10 @@ typedef struct{
     WORD state[8];
 } SHA256_CTX;
 
+//to implement
+void sha256_init(SHA256_CTX * ctx);
+void sha256_update(SHA256_CTX *ctx, const BYTE data[], size_t len);
+void sha256_final(SHA256_CTX *ctx, BYTE hash[]);
 
 /*
  * returns the hashed string of msg using the sha-256 algorithm
