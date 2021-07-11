@@ -3,6 +3,21 @@
 #define _HASH_H
 
 #include "./utils.h"
+#include <stddef.h>
+
+#define SHA256_BLOCK_SIZE 32
+
+/**************** DATA TYPES ****************/
+typedef unsigned char BYTE; // 8-bit byte
+typedef unsigned int WORD; // 32-bit word, change to "long"
+
+typedef struct{
+    BYTE data[64];
+    WORD lenght;
+    unsigned long long bitlenght;
+    WORD state[8];
+} SHA256_CTX;
+
 
 /*
  * returns the hashed string of msg using the sha-256 algorithm
