@@ -60,7 +60,7 @@ int main (){
             char temp;
             ArregloChars uid = new char[MAX_UID]; 
 
-            printf("Name:");
+            printf("Full Name:");
             scanf("%c", &temp);
             scanf("%[^\n]", name);
             printf("Age:");
