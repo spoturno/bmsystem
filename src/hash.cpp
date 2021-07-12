@@ -6,7 +6,14 @@
  * Details: Implementation of sha-256 algorithm. sha-256 is one of the
  *          three algorithms of sha-2 specification. Algorithm specification
  *          can be found on README.md
- *************************************************/
+ *************************************************
+* Note 1: All variables are 32 bit unsigned integers and addition is calculated modulo 2^32
+* Note 2: The compression function uses 8 working variables,
+* Note 3: Big-endian convention is used when expressing the constants in this pseudocode,
+    and when parsing message block data from bytes to words, for example,
+    the first word of the input message "abc" after padding is 0x61626380
+*************************************************/
+
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -24,6 +31,7 @@
 #define SIG0(x) (ROTRIGHT(x,7) ^ ROTRIGHT(x,18) ^ ((x) >> 3))
 #define SIG1(x) (ROTRIGHT(x,17) ^ ROTRIGHT(x,19) ^ ((x) >> 10))
 
+//fistt 32 bits of the fractional parts of the cube roots of the first 64 primes 2..311
 static const WORD K[64] =
 {
     0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,
@@ -45,6 +53,7 @@ void sha256_transform(SHA256_CTX *ctx, const BYTE data[]){
     for( ; i < 64; i++)
         m[i] = SIG1(m[i - 2]) + m[i - 7] + SIG0(m[i - 15]) + m[i - 16];
 
+    // Initialize working variables to current hash value
     a = ctx->state[0];
     b = ctx->state[1];
     c = ctx->state[2];
@@ -54,6 +63,7 @@ void sha256_transform(SHA256_CTX *ctx, const BYTE data[]){
     g = ctx->state[6];
     h = ctx->state[7];
 
+    // Compression function main loop
     for(i=0; i<64; i++){
         t1 = h + EP1(e) + CH(e, f, g) + K[i] + m[i];
         t2 = EP0(a) + MAJ(a, b, c);
@@ -67,6 +77,7 @@ void sha256_transform(SHA256_CTX *ctx, const BYTE data[]){
         a = t1 + t2;
     }
 
+    // Add the compressed chunk to the current hash value
 	ctx->state[0] += a;
 	ctx->state[1] += b;
 	ctx->state[2] += c;
@@ -80,6 +91,9 @@ void sha256_transform(SHA256_CTX *ctx, const BYTE data[]){
 void sha256_init(SHA256_CTX *ctx){
     ctx->lenght = 0;
     ctx->bitlenght = 0;
+
+    // Initialize hash values:
+    // first 32 bits of the fractional parts of the square roots of the fist 8 primes 2..19
     ctx->state[0] = 0x6a09e667;
 	ctx->state[1] = 0xbb67ae85;
 	ctx->state[2] = 0x3c6ef372;
