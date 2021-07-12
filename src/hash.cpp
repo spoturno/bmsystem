@@ -9,7 +9,7 @@
  *************************************************
 * Note 1: All variables are 32 bit unsigned integers and addition is calculated modulo 2^32
 * Note 2: The compression function uses 8 working variables,
-* Note 3: Big-endian convention is used when expressing the constants in this pseudocode,
+* Note 3: Little-endian convention is used when expressing the constants in this pseudocode,
     and when parsing message block data from bytes to words, for example,
     the first word of the input message "abc" after padding is 0x61626380
 *************************************************/
