@@ -104,3 +104,16 @@ void sha256_init(SHA256_CTX *ctx){
 }
 
 
+void sha256_update(SHA256_CTX *ctx, const BYTE data[], size_t len){
+    WORD i;
+    for(i = 0; i < len; i++){
+        ctx->data[ctx->lenght] = data[i];
+        ctx->lenght++;
+        if(ctx->lenght == 64){
+            sha256_transform(ctx, ctx->data);
+            ctx->bitlenght+=512;
+            ctx->lenght = 0;
+        }
+    }
+}
+
