@@ -152,6 +152,7 @@ void freeTable(Table table){
     delete table;
 }
 
+// fix vertical divisors (TODO)
 void printTable(Table table){
     printf("\n");
     printf("+-----------------+-----------------+------+-----------+-----------+\n");

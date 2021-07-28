@@ -35,6 +35,7 @@ User next(User user)
     return user->next;
 }
 
+//Reuquires Update (TODO)
 User modifyUser(User user){
     nat option;
     printf("[1] Id\n[2] Name\n[3] Age\n[4] Balance\n");

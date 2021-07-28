@@ -1,6 +1,7 @@
 #include "include/user.h"
 #include "include/utils.h"
 #include "include/userTable.h"
+#include "include/transactions.h"
 
 #include <stdio.h>
 #include <time.h>
@@ -54,10 +55,8 @@ int main (){
             salir = true;
             printf("See you later!\n");
         } else if (option == 1){
-            nat age;
-            int balance;
+            nat age; int balance; char temp;
             ArregloChars name = new char[MAX_NAME];
-            char temp;
             ArregloChars uid = new char[MAX_UID]; 
 
             printf("Full Name:");
@@ -90,6 +89,9 @@ int main (){
             } 
         } else if(option == 6){
             initialScreen();
+        }else if(option == 5){
+            showTransactions();
+
         } else if(option == 7){
             User user = selectUser(users_table);
             if(user != NULL){
