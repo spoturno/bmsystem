@@ -2,8 +2,8 @@
  * author: Tomas Spoturno
  * filename: transactions.h
  * description: This module contains the transactions representation for each User,
- * each transaction of the user will be a Transaction node node of a binarySearch tree.
- * The Transaction struct contains all the user transactions (BST) together with the total
+ * each transaction of the user will be a Transaction node of a binarySearch tree.
+ * The _rep_transactions struct contains all the user transactions as a BST (tran:Transaction pointer) together with the total
  * number of transactions made and more.
  *
  *
@@ -27,14 +27,26 @@ typedef struct _rep_infotrac *Infotrac;
 void showTransactions();
 
 /*
+ * returns a transaction block with 0 transaction and a NULL trasaction
+ */
+Transactions createEmptyTransactions();
+
+/*
  * creates a new transaction to add
  */
 Transaction createTransation();
 
 /*
- * adds the to_add transaction to the user Transactions t
+ * Adds a new node (to_add) to the binary search tree tran:Transaction 
  */
-Transactions addTransaction(Transaction to_add, Transactions t);
+Transaction addTransaction(Transaction to_add, Transaction tran);
+
+/*
+ * This function calls addTransaction giving the following arguments: to_add and t->tran.
+ * Also the total of transaction increase 1.
+ *
+ */
+Transactions addToTransactions(Transaction to_add, Transactions t);
 
 
 /*
