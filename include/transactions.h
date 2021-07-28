@@ -16,7 +16,7 @@
 typedef struct _rep_transactions *Transactions;
 
 // Repesents the binary search tree trasaction-node. It containded in Transactions
-typedef struct _rep_trasaction *Transaction;
+typedef struct _rep_transaction *Transaction;
 
 // struct that contains the information of each transaction-node
 typedef struct _rep_infotrac *Infotrac;
