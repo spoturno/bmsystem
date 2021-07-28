@@ -23,5 +23,18 @@ struct _rep_infotrac{
 };
 
 
+Transaction createTransation(){
+    return NULL;
+}
+
+Transactions addTransaction(Transactions t){
+    return NULL;
+}
+
+Transactions removeTransaction(Transaction to_remove, Transactions t){
+        return NULL;
+}
+
+
 void showTransactions(){
 }

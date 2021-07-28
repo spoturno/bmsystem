@@ -26,5 +26,21 @@ typedef struct _rep_infotrac *Infotrac;
  */
 void showTransactions();
 
+/*
+ * creates a new transaction to add
+ */
+Transaction createTransation();
+
+/*
+ * adds the to_add transaction to the user Transactions t
+ */
+Transactions addTransaction(Transaction to_add, Transactions t);
+
+
+/*
+ * removes the to_remove transaction from the user Transactions t
+ */
+Transactions removeTransaction(Transaction to_remove, Transactions t);
+
 
 #endif
