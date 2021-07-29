@@ -18,7 +18,6 @@ struct _rep_transaction{
     Infotrac info;
 };
 
-
 struct _rep_infotrac{
     User receiver;
     nat amount;

@@ -1,0 +1,14 @@
+|******************************************|
+|          Bank Managment System           |
+|******************************************|
+|                                          |
+|    [1] Insert new user account           |
+|    [2] Update user information           |
+|    [3] User book                         |
+|    [4] Remove user account               |
+|    [5] Transaction book                  |
+|    [6] CLEAR SCREEN                      |
+|    [7] Add balance to Account            |
+|    [0] Exit                              |
+|                                          |
+|******************************************|

@@ -17,6 +17,8 @@ This module contains some needed abstract types such as nat (unsigned int, natur
 This module includes all the operations related to [date and time gnu]('https://www.gnu.org/software/libc/manual/html_node/Date-and-Time.html')
 ### hash
 This module includes all the operations related to hashing a string with the sha-256 algorithm. It will substitute the current hash function of userTable module. Also It'll work for any transaction algorithm in the future.
+### transaction
+This module represents all the transaction made by one user in the userTable. Each transaction is stored in a binary search tree of type Transaction which is included in the _rep_transaction who is pointed by Transactions.
 
 ## Prerequisites
 - [g++ compiler](https://gcc.gnu.org) or `gcc -xc++ -lstdc++ -shared-libgcc`
@@ -28,9 +30,11 @@ This module includes all the operations related to hashing a string with the sha
 3. `g++ -c src/user.cpp -o obj/user.o`
 4. `g++ -c src/utils.cpp -o obj/utils.o`
 5. `g++ -c src/userTable.cpp -o obj/userTable.o`
-6. `g++ -c main.cpp -o obj/main.o`
-7. `g++ obj/main.o obj/utils.o obj/user.o obj/userTable.o -o main`
-8. `./main`
+6. `g++ -c src/timer.cpp -o obj/userTable.o`
+7. `g++ -c src/transactions.cpp -o obj/transactions.o`
+8. `g++ -c main.cpp -o obj/main.o`
+9. `g++ obj/main.o obj/utils.o obj/user.o obj/userTable.o obj/transactions.o -o main`
+10. `./main`
 
 ## Usage
 When executing the program the first thing that is found is the initial screen where you should choose on of the following options: 
@@ -48,12 +52,13 @@ After that if you want to remove a user, same as before, you will be asked to se
 Transaction book (TODO).
 Clear Screen just clears the screen and show again the inital screen to make it cleaner. This also could be implemented reading and writing the stream, selecting the lines that are not supposed to be shown. Finally to exit the program just input `0` on the stream.
 
-## Future functionalities
-- Makefile
-- help section
-- store data in text file
-- store data in mySQL databse
-- invalid_input_error()
+## TODOS
+- Makefile for compilation and others.
+- Help section for the program.
+- Create .txt test files. And maybe integrate with github tests.
+- Store data in mySQL databse.
+- Make invalid_input_error() for checking program input.
+- Image for github README
 
 ## Contributing
 Have you spotted a typo, would you like to fix a link, or is there something you’d like to suggest? Be welcome to open a pull request!

@@ -1,7 +1,6 @@
 #include "include/user.h"
 #include "include/utils.h"
 #include "include/userTable.h"
-#include "include/transactions.h"
 
 #include <stdio.h>
 #include <time.h>
@@ -90,8 +89,7 @@ int main (){
         } else if(option == 6){
             initialScreen();
         }else if(option == 5){
-            showTransactions();
-
+            break;
         } else if(option == 7){
             User user = selectUser(users_table);
             if(user != NULL){
