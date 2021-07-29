@@ -57,9 +57,9 @@ Transaction addTransaction(Transaction to_add, Transaction tran){
     assert(isValidTransaction(to_add));
     if(tran == NULL)    
        return to_add; 
-    else if(to_add->info->amount > tran->info->amount)
+    if(to_add->info->amount > tran->info->amount)
         return addTransaction(to_add, tran->right); 
-    else  return addTransaction(to_add, tran->left);
+    return addTransaction(to_add, tran->left);
 }
 
 Transactions removeTransaction(Transaction to_remove, Transactions t){
