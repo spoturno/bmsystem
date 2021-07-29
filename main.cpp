@@ -16,7 +16,7 @@ void initialScreen(){
     printf("\e[1;1H\e[2J");
     FILE * fp;
     int c;
-    fp = fopen("new.txt", "r");
+    fp = fopen("screen.txt", "r");
     while(1){
         c = fgetc(fp);
         if(feof(fp))
