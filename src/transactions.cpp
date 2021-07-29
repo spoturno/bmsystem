@@ -59,8 +59,14 @@ Transactions addToTransaction(Transaction to_add, Transactions t){
 }
 
 Transaction addTransaction(Transaction to_add, Transaction tran){
-    //TODO
-    return NULL;
+    if(tran == NULL)
+        return createTransation(to_add->info->amount, to_add->info->receiver);
+    
+    if(to_add->info->amount < tran->info->amount)
+        tran->left = addTransaction(to_add, tran->left);
+    else tran->right = addTransaction(to_add, tran->right);
+
+    return tran;
 }
 
 Transaction searchTransaction(Transaction to_search, Transaction tran){
@@ -100,22 +106,22 @@ Transaction removeTransaction(Transaction to_remove, Transaction tran){
             Transaction temp = tran->left;
             delete tran;
             return temp;
-
         }
         // node with two children: get the inorder successor
         // (samallest in the right subtree)
         Transaction temp = minTransaction(tran->right);
-        tran->info->amount = temp->info->amount;
+        tran->info = temp->info;
         tran->right = removeTransaction(tran->right, temp->right);
     }
-
     return tran;
 }
 
 Transaction minTransaction(Transaction tran){
-    if(tran->left == NULL)
-        return tran;
-    return tran->left;
+    assert(isValidTransaction(tran));
+    Transaction current = tran;
+    while(current && current->left)
+        current = current->left;
+    return current;
 }
 
 void showTransactions(){
