@@ -79,8 +79,37 @@ Transactions removeOfTransactions(Transaction to_remove, Transactions t){
 }
 
 Transaction removeTransaction(Transaction to_remove, Transaction tran){
-    //TODO
-    return NULL;
+    if(tran == NULL)
+        return tran;
+
+    if(to_remove->info->amount < tran->info->amount)
+        tran->left = removeTransaction(to_remove, tran->left);
+    else if(to_remove->info->amount > tran->right->info->amount)
+        tran->right = removeTransaction(to_remove, tran->right);
+    else{//same key         
+        //node has no child
+        if(tran->right == NULL && tran->left == NULL)
+            return NULL;
+        //node with only one child
+        else if(tran->left == NULL){
+            Transaction temp = tran->right;
+            delete tran;
+            return temp;
+        }
+        else if(tran->right == NULL){
+            Transaction temp = tran->left;
+            delete tran;
+            return temp;
+
+        }
+        // node with two children: get the inorder successor
+        // (samallest in the right subtree)
+        Transaction temp = minTransaction(tran->right);
+        tran->info->amount = temp->info->amount;
+        tran->right = removeTransaction(tran->right, temp->right);
+    }
+
+    return tran;
 }
 
 Transaction minTransaction(Transaction tran){

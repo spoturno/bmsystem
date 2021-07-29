@@ -59,6 +59,7 @@ Clear Screen just clears the screen and show again the inital screen to make it 
 - Store data in mySQL databse.
 - Make invalid_input_error() for checking program input.
 - Image for github README
+- Future integration with gtk+ toolkit or OpenGL library
 
 ## Contributing
 Have you spotted a typo, would you like to fix a link, or is there something you’d like to suggest? Be welcome to open a pull request!
