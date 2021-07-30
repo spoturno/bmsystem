@@ -18,6 +18,7 @@ struct _rep_transaction{
     Infotrac info;
 };
 
+//change amount to floating (TODO)
 struct _rep_infotrac{
     User receiver;
     nat amount;
@@ -28,9 +29,8 @@ bool isEmptyTransaction(Transaction t){
     return (t == NULL ? true : false);
 }
 
-bool isValidTransaction(Transaction t){
-    //TODO
-    return false;
+bool isValidTransaction(Transaction tran){
+    return (tran->info->amount <= 0 ? false : true);
 }
 
 Transactions createEmptyTransactions(){
@@ -59,8 +59,14 @@ Transactions addToTransaction(Transaction to_add, Transactions t){
 }
 
 Transaction addTransaction(Transaction to_add, Transaction tran){
-    //TODO
-    return NULL;
+    if(tran == NULL)
+        return createTransation(to_add->info->amount, to_add->info->receiver);
+    
+    if(to_add->info->amount < tran->info->amount)
+        tran->left = addTransaction(to_add, tran->left);
+    else tran->right = addTransaction(to_add, tran->right);
+
+    return tran;
 }
 
 Transaction searchTransaction(Transaction to_search, Transaction tran){
@@ -79,17 +85,57 @@ Transactions removeOfTransactions(Transaction to_remove, Transactions t){
 }
 
 Transaction removeTransaction(Transaction to_remove, Transaction tran){
-    //TODO
-    return NULL;
+    if(tran == NULL)
+        return tran;
+
+    if(to_remove->info->amount < tran->info->amount)
+        tran->left = removeTransaction(to_remove, tran->left);
+    else if(to_remove->info->amount > tran->right->info->amount)
+        tran->right = removeTransaction(to_remove, tran->right);
+    else{//same key         
+        //node has no child
+        if(tran->right == NULL && tran->left == NULL)
+            return NULL;
+        //node with only one child
+        else if(tran->left == NULL){
+            Transaction temp = tran->right;
+            delete tran;
+            return temp;
+        }
+        else if(tran->right == NULL){
+            Transaction temp = tran->left;
+            delete tran;
+            return temp;
+        }
+        // node with two children: get the inorder successor
+        // (samallest in the right subtree)
+        Transaction temp = minTransaction(tran->right);
+        tran->info = temp->info;
+        tran->right = removeTransaction(tran->right, temp->right);
+    }
+    return tran;
 }
 
 Transaction minTransaction(Transaction tran){
-    if(tran->left == NULL)
-        return tran;
-    return tran->left;
+    assert(isValidTransaction(tran));
+    Transaction current = tran;
+    while(current && current->left)
+        current = current->left;
+    return current;
 }
 
-void showTransactions(){
-    //TODO
+void showTransactions(Transactions t){
+    assert(!isEmptyTransaction(t->tran));
+    printf("Transactions of User | Total: %d", t->total_transactions);
+    printf("--------------------------------------");
+    formattedTransaction(t->tran);
+}
+
+void formattedTransaction(Transaction tran, nat count){
+    if(tran != NULL){
+        formattedTransaction(tran->left);
+        printf("%d - Amount: %d - Reciever: %s", count, tran->info->amount, name(tran->info->receiver));
+        formattedTransaction(tran->right);
+    }
 }
 

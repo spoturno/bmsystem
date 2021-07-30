@@ -31,6 +31,11 @@ bool isValidTransaction(Transaction t);
 void showTransactions();
 
 /*
+ * prints the binary tree in-order formatted.
+ */
+void formattedTransaction(Transaction tran);
+
+/*
  * returns a transaction block with 0 transaction and a NULL trasaction
  */
 Transactions createEmptyTransactions();
@@ -73,6 +78,7 @@ Transaction removeTransaction(Transaction to_remove, Transaction tran);
  * returns the minimun Transaction
  */
 Transaction minTransaction(Transaction tran);
+
 
 
 #endif
