@@ -131,10 +131,10 @@ void showTransactions(Transactions t){
     formattedTransaction(t->tran);
 }
 
-void formattedTransaction(Transaction tran){
+void formattedTransaction(Transaction tran, nat count){
     if(tran != NULL){
         formattedTransaction(tran->left);
-        printf("");
+        printf("%d - Amount: %d - Reciever: %s", count, tran->info->amount, name(tran->info->receiver));
         formattedTransaction(tran->right);
     }
 }

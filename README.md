@@ -53,6 +53,7 @@ Transaction book (TODO).
 Clear Screen just clears the screen and show again the inital screen to make it cleaner. This also could be implemented reading and writing the stream, selecting the lines that are not supposed to be shown. Finally to exit the program just input `0` on the stream.
 
 ## TODOS
+- Implement user bank account number.
 - Makefile for compilation and others.
 - Help section for the program.
 - Create .txt test files. And maybe integrate with github tests.
