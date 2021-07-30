@@ -18,6 +18,7 @@ struct _rep_transaction{
     Infotrac info;
 };
 
+//change amount to floating (TODO)
 struct _rep_infotrac{
     User receiver;
     nat amount;
@@ -28,9 +29,8 @@ bool isEmptyTransaction(Transaction t){
     return (t == NULL ? true : false);
 }
 
-bool isValidTransaction(Transaction t){
-    //TODO
-    return false;
+bool isValidTransaction(Transaction tran){
+    return (tran->info->amount <= 0 ? false : true);
 }
 
 Transactions createEmptyTransactions(){
@@ -124,7 +124,18 @@ Transaction minTransaction(Transaction tran){
     return current;
 }
 
-void showTransactions(){
-    //TODO
+void showTransactions(Transactions t){
+    assert(!isEmptyTransaction(t->tran));
+    printf("Transactions of User | Total: %d", t->total_transactions);
+    printf("--------------------------------------");
+    formattedTransaction(t->tran);
+}
+
+void formattedTransaction(Transaction tran){
+    if(tran != NULL){
+        formattedTransaction(tran->left);
+        printf("");
+        formattedTransaction(tran->right);
+    }
 }
 
