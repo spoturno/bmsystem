@@ -1,6 +1,7 @@
 #include "include/user.h"
 #include "include/utils.h"
 #include "include/userTable.h"
+#include "include/transactions.h"
 
 #include <stdio.h>
 #include <time.h>
@@ -50,9 +51,13 @@ int main (){
 
     while (!salir){
         int option = getInputUser();
+
+        //exit
         if(option == 0){
             salir = true;
             printf("See you later!\n");
+
+        //add user
         } else if (option == 1){
             nat age; int balance; char temp;
             ArregloChars name = new char[MAX_NAME];
@@ -73,24 +78,40 @@ int main (){
             users_table = addUser(user, users_table);
             printf("\n-New user added successfully-\n\n");
 
+        //modify user data
         } else if(option == 2){ 
             User user = selectUser(users_table);
             user = modifyUser(user);
             printf("User modified correctly\n\n");
+    
+        //show user book
         } else if(option == 3){
             printf("\n");
             printTable(users_table);
+
+            
+        //remove user account
         } else if(option == 4){
             User user = selectUser(users_table);
             if(user != NULL){
                 users_table = removeUser(user, users_table);
                 printf("User removed successfully\n\n");
             } 
-        } else if(option == 6){
-            initialScreen();
+
+
+        //show transaction book of user
         }else if(option == 5){
+            //showTransactions();
+            printf("\n[0] Back");
             break;
-        } else if(option == 7){
+
+        //clear screen
+        }else if(option == 6){
+            User user = selectUser(users_table);
+            initialScreen();
+
+
+        }else if(option == 7){
             User user = selectUser(users_table);
             if(user != NULL){
                 int a_balance;

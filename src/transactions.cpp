@@ -128,14 +128,18 @@ void showTransactions(Transactions t){
     assert(!isEmptyTransaction(t->tran));
     printf("Transactions of User | Total: %d", t->total_transactions);
     printf("--------------------------------------");
-    formattedTransaction(t->tran);
+    formattedTransaction(t->tran, 0);
 }
 
 void formattedTransaction(Transaction tran, nat count){
     if(tran != NULL){
-        formattedTransaction(tran->left);
+        formattedTransaction(tran->left, count+1);
         printf("%d - Amount: %d - Reciever: %s", count, tran->info->amount, name(tran->info->receiver));
-        formattedTransaction(tran->right);
+        formattedTransaction(tran->right, count+2);
     }
 }
 
+void screenTransactions(Transactions t){
+    printf("\e[1;1H\e[2J");
+    showTransactions(t);
+}

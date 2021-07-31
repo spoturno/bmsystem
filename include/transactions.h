@@ -19,6 +19,7 @@ typedef struct _rep_transaction *Transaction;
 // struct that contains the information of each transaction-node
 typedef struct _rep_infotrac *Infotrac;
 
+#include "user.h"
 
 /*
  * returns true if all the fields of info:Infotrac in t:Trasaction are valid fields.
@@ -28,12 +29,12 @@ bool isValidTransaction(Transaction t);
 /*
  * shows all the current transactions made by all the users
  */
-void showTransactions();
+void showTransactions(Transactions t);
 
 /*
  * prints the binary tree in-order formatted.
  */
-void formattedTransaction(Transaction tran);
+void formattedTransaction(Transaction tran, nat count);
 
 /*
  * returns a transaction block with 0 transaction and a NULL trasaction
