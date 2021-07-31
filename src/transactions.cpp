@@ -59,7 +59,7 @@ Transactions addToTransaction(Transaction to_add, Transactions t){
 
 Transaction addTransaction(Transaction to_add, Transaction tran){
     if(tran == NULL)
-        return createTransation(to_add->info->amount, to_add->info->to_account);
+        return to_add;
     
     if(to_add->info->amount < tran->info->amount)
         tran->left = addTransaction(to_add, tran->left);

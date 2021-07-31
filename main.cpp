@@ -117,15 +117,25 @@ int main (){
             User user = selectUser(users_table);
             if(transactions(user) == NULL){
                 Transactions t = createEmptyTransactions();
-                // Transaction to_add = ... (call crateTransaction (TODO))   
-                // t = addToTransactions(to_add, t); (TODO)
                 user = assignTransactions(user, t);
             }
-            
-            //select the amount and the reciever of the transaction
-            //assing the values 
-            //print the transaction maded
 
+            // get amount and user_account:ArregloChars
+            nat amount; ArregloChars to_account;
+            printf("Reciever Account:");
+            leerChars(to_account);
+            printf("Transaction Amount:");
+            scanf("%d", &amount);
+            
+            if (balance(user) - amount < 0)
+                printf("Insufficient balance\n");
+            else{
+                Transaction to_add = createTransation(amount, to_account);
+                user = assignTransactions(user, addToTransactions(to_add, transactions(user)));
+                user = addBalance(user, -amount);
+                printf("Transaction successfull\n");
+            }
+    
 
         //clear screen
         }else if(option == 8){
