@@ -1,6 +1,7 @@
 #include "include/user.h"
 #include "include/utils.h"
 #include "include/userTable.h"
+#include "include/transactions.h"
 
 #include <stdio.h>
 #include <time.h>
@@ -100,7 +101,9 @@ int main (){
 
         //show transaction book of user
         }else if(option == 5){
-            //showTransactions();
+            User user = selectUser(users_table);
+            if(user != NULL)
+                showTransactions(transactions(user));
             printf("\n[0] Back");
             int q = getInputUser();
             if(q == 0)
@@ -110,8 +113,14 @@ int main (){
 
         //make transaction
         }else if(option == 6){
+            printf("Select Who makes the transaction:");
             User user = selectUser(users_table);
-
+            if(transactions(user) == NULL)
+                Transactions t = createEmptyTransactions();
+            //select the amount and the reciever of the transaction
+            //assing the values 
+            user = assignTransactions(user, t);
+            //print the transaction maded
 
 
         //clear screen

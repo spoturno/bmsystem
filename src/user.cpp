@@ -28,6 +28,7 @@ User createUser(nat age, ArregloChars name, ArregloChars id, int balance){
     user->next = NULL;
     user->balance = balance;
     user->time = getCurrentTime();
+    user->trc = NULL;
     return user;
 }
 
@@ -134,4 +135,9 @@ User refNextUser(User user, User ref_to){
 
 Transactions transactions(User user){
     return user->trc;
+}
+
+User assignTransactions(User user,Transactions t){
+    user->trc = t;
+    return user;
 }

@@ -97,6 +97,11 @@ time_t user_since(User user);
  */
 Transactions transactions(User user);
 
+/*
+ * assings t:Transactions to user->trc:Transactions
+ */
+User assignTransactions(User user,Transactions t);
+
 #endif
 
 
