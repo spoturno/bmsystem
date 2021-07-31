@@ -3,6 +3,7 @@
 
 #include "./utils.h"
 #include <time.h>
+#include "transactions.h"
 
 typedef struct _rep_user *User;
 
@@ -90,6 +91,11 @@ void printUserChain(User user);
  * returns the first time user was insert on the table
  */
 time_t user_since(User user);
+
+/*
+ * returns the user trc:Transactions 
+ */
+Transactions transactions(User user);
 
 #endif
 

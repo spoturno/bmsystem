@@ -1,7 +1,6 @@
 #include "include/user.h"
 #include "include/utils.h"
 #include "include/userTable.h"
-#include "include/transactions.h"
 
 #include <stdio.h>
 #include <time.h>
@@ -103,10 +102,20 @@ int main (){
         }else if(option == 5){
             //showTransactions();
             printf("\n[0] Back");
-            break;
+            int q = getInputUser();
+            if(q == 0)
+                initialScreen();
+            //else make sth (TODO) 
+            
+
+        //make transaction
+        }else if(option == 6){
+            User user = selectUser(users_table);
+
+
 
         //clear screen
-        }else if(option == 6){
+        }else if(option == 8){
             User user = selectUser(users_table);
             initialScreen();
 

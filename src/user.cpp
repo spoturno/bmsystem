@@ -17,6 +17,7 @@ struct _rep_user{
     User next;
     struct tm *time;
     int balance;
+    Transactions trc;
 };
 
 User createUser(nat age, ArregloChars name, ArregloChars id, int balance){
@@ -131,3 +132,6 @@ User refNextUser(User user, User ref_to){
     return user;
 }
 
+Transactions transactions(User user){
+    return user->trc;
+}

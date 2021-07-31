@@ -10,6 +10,8 @@
 #ifndef _TRANS_H_
 #define _TRANS_H_
 
+#include "utils.h"
+
 // Contains the user transactions information
 typedef struct _rep_transactions *Transactions;
 
@@ -19,7 +21,7 @@ typedef struct _rep_transaction *Transaction;
 // struct that contains the information of each transaction-node
 typedef struct _rep_infotrac *Infotrac;
 
-#include "user.h"
+typedef unsigned int nat; //TODO move to utils
 
 /*
  * returns true if all the fields of info:Infotrac in t:Trasaction are valid fields.
@@ -44,7 +46,7 @@ Transactions createEmptyTransactions();
 /*
  * creates a new transaction to add
  */
-Transaction createTransation();
+Transaction createTransation(nat amount, ArregloChars to_account);
 
 /*
  * search to_search node-transaction in tran:Transaction binary search tree.

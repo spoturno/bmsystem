@@ -4,7 +4,6 @@
 #include <assert.h>
 
 #include "../include/transactions.h"
-#include "../include/user.h"
 #include "../include/timer.h"
 
 struct _rep_transactions{
@@ -20,7 +19,7 @@ struct _rep_transaction{
 
 //change amount to floating (TODO)
 struct _rep_infotrac{
-    User receiver;
+    ArregloChars to_account;
     nat amount;
     struct tm * date;
 };
@@ -40,11 +39,11 @@ Transactions createEmptyTransactions(){
    return trans;
 }
 
-Transaction createTransation(nat amount, User receiver){
+Transaction createTransation(nat amount, ArregloChars to_account){
     Transaction t = new _rep_transaction;
     Infotrac info = new _rep_infotrac;
     info->amount = amount;
-    info->receiver = receiver;
+    info->to_account = to_account;
     info->date = getCurrentTime();
     t->info = info;
     t->left = t->right = NULL;
@@ -60,7 +59,7 @@ Transactions addToTransaction(Transaction to_add, Transactions t){
 
 Transaction addTransaction(Transaction to_add, Transaction tran){
     if(tran == NULL)
-        return createTransation(to_add->info->amount, to_add->info->receiver);
+        return createTransation(to_add->info->amount, to_add->info->to_account);
     
     if(to_add->info->amount < tran->info->amount)
         tran->left = addTransaction(to_add, tran->left);
@@ -134,7 +133,7 @@ void showTransactions(Transactions t){
 void formattedTransaction(Transaction tran, nat count){
     if(tran != NULL){
         formattedTransaction(tran->left, count+1);
-        printf("%d - Amount: %d - Reciever: %s", count, tran->info->amount, name(tran->info->receiver));
+        printf("%d - Amount: %d - Reciever: %s", count, tran->info->amount, tran->info->to_account);
         formattedTransaction(tran->right, count+2);
     }
 }
