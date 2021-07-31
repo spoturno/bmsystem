@@ -82,6 +82,18 @@ Transaction removeTransaction(Transaction to_remove, Transaction tran);
  */
 Transaction minTransaction(Transaction tran);
 
+/*
+ * free the binary search tree memory
+ */
+void dellocate(Transaction tran);
+
+/*
+ * free the memory of t:Transaction calling dellocate
+ */
+void freeTransactions(Transactions t);
+
+
+
 
 
 #endif

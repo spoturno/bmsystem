@@ -142,3 +142,16 @@ void screenTransactions(Transactions t){
     printf("\e[1;1H\e[2J");
     showTransactions(t);
 }
+
+void dellocate(Transaction tran){
+    if(tran == NULL)
+        return;
+    dellocate(tran->left);
+    dellocate(tran->right);
+    delete tran;
+}
+
+void freeTransactions(Transactions t){
+    dellocate(t->tran);
+    delete t;
+}

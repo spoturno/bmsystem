@@ -43,13 +43,15 @@ User modifyUser(User user){
     printf("[1] Id\n[2] Name\n[3] Age\n[4] Balance\n");
     printf("Select what you want to modify:");
     scanf("%d", &option);
+
     if(option == 1){
         ArregloChars new_id = new char[MAX_UID];
         printf("Inser new Id:");
         leerChars(new_id);
         ArregloChars temp = user->id;
         user->id = new_id;
-        delete[] temp;
+        //delete[] temp;
+
     } else if(option == 2){
         ArregloChars new_name = new char[MAX_NAME];
         printf("Insert new Name");
@@ -57,11 +59,13 @@ User modifyUser(User user){
         ArregloChars temp = user->name;
         user->name = new_name;
         delete[] temp;
+
     } else if(option == 3){
         nat new_age;
         printf("Insert new Age:");
         new_age = leerNat();
         user->age = new_age;
+
     } else if(option == 4){
         printf("This will only change (replace) the current user balance\n");
         printf("To add balance go option 7 in initial screen\n");
@@ -86,6 +90,7 @@ void freeUser(User user){
         while(user->next != NULL){
             User temp = user;
             user = user->next;
+            freeTransactions(transactions(temp));
             delete temp;
         }
     }
