@@ -50,7 +50,7 @@ Transaction createTransation(nat amount, ArregloChars to_account){
     return t;
 }
 
-Transactions addToTransaction(Transaction to_add, Transactions t){
+Transactions addToTransactions(Transaction to_add, Transactions t){
     assert(isValidTransaction(to_add));
     t->total_transactions++;
     t->tran = addTransaction(to_add, t->tran);

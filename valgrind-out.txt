@@ -1,0 +1,188 @@
+==3826== Memcheck, a memory error detector
+==3826== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==3826== Using Valgrind-3.15.0-608cb11914-20190413 and LibVEX; rerun with -h for copyright info
+==3826== Command: ./main
+==3826== Parent PID: 1731
+==3826== 
+--3826-- 
+--3826-- Valgrind options:
+--3826--    --leak-check=full
+--3826--    --show-leak-kinds=all
+--3826--    --track-origins=yes
+--3826--    --verbose
+--3826--    --log-file=valgrind-out.txt
+--3826-- Contents of /proc/version:
+--3826--   Linux version 5.8.0-63-generic (buildd@lgw01-amd64-035) (gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0, GNU ld (GNU Binutils for Ubuntu) 2.34) #71~20.04.1-Ubuntu SMP Thu Jul 15 17:46:08 UTC 2021
+--3826-- 
+--3826-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-ssse3-avx-avx2-rdrand
+--3826-- Page sizes: currently 4096, max supported 4096
+--3826-- Valgrind library directory: /usr/lib/x86_64-linux-gnu/valgrind
+--3826-- Reading syms from /home/tomas/Coding/bmsystem/main
+--3826-- Reading syms from /usr/lib/x86_64-linux-gnu/ld-2.31.so
+--3826--   Considering /usr/lib/x86_64-linux-gnu/ld-2.31.so ..
+--3826--   .. CRC mismatch (computed 975d0390 wanted 30bd717f)
+--3826--   Considering /lib/x86_64-linux-gnu/ld-2.31.so ..
+--3826--   .. CRC mismatch (computed 975d0390 wanted 30bd717f)
+--3826--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/ld-2.31.so ..
+--3826--   .. CRC is valid
+--3826-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/memcheck-amd64-linux
+--3826--    object doesn't have a symbol table
+--3826--    object doesn't have a dynamic symbol table
+--3826-- Scheduler: using generic scheduler lock implementation.
+--3826-- Reading suppressions file: /usr/lib/x86_64-linux-gnu/valgrind/default.supp
+==3826== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-3826-by-tomas-on-???
+==3826== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-3826-by-tomas-on-???
+==3826== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-3826-by-tomas-on-???
+==3826== 
+==3826== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==3826== don't want to do, unless you know exactly what you're doing,
+==3826== or are doing some strange experiment):
+==3826==   /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=3826 ...command...
+==3826== 
+==3826== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==3826==   /path/to/gdb ./main
+==3826== and then give GDB the following command
+==3826==   target remote | /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=3826
+==3826== --pid is optional if only one valgrind process is running
+==3826== 
+--3826-- REDIR: 0x4022e10 (ld-linux-x86-64.so.2:strlen) redirected to 0x580c9ce2 (???)
+--3826-- REDIR: 0x4022be0 (ld-linux-x86-64.so.2:index) redirected to 0x580c9cfc (???)
+--3826-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_core-amd64-linux.so
+--3826--    object doesn't have a symbol table
+--3826-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so
+--3826--    object doesn't have a symbol table
+==3826== WARNING: new redirection conflicts with existing -- ignoring it
+--3826--     old: 0x04022e10 (strlen              ) R-> (0000.0) 0x580c9ce2 ???
+--3826--     new: 0x04022e10 (strlen              ) R-> (2007.0) 0x0483f060 strlen
+--3826-- REDIR: 0x401f5f0 (ld-linux-x86-64.so.2:strcmp) redirected to 0x483ffd0 (strcmp)
+--3826-- REDIR: 0x4023370 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4843a20 (mempcpy)
+--3826-- Reading syms from /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28
+--3826--    object doesn't have a symbol table
+--3826-- Reading syms from /usr/lib/x86_64-linux-gnu/libc-2.31.so
+--3826--   Considering /usr/lib/x86_64-linux-gnu/libc-2.31.so ..
+--3826--   .. CRC mismatch (computed 86b78530 wanted e380f01c)
+--3826--   Considering /lib/x86_64-linux-gnu/libc-2.31.so ..
+--3826--   .. CRC mismatch (computed 86b78530 wanted e380f01c)
+--3826--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libc-2.31.so ..
+--3826--   .. CRC is valid
+--3826-- Reading syms from /usr/lib/x86_64-linux-gnu/libm-2.31.so
+--3826--   Considering /usr/lib/x86_64-linux-gnu/libm-2.31.so ..
+--3826--   .. CRC mismatch (computed fcb42c76 wanted f6c95789)
+--3826--   Considering /lib/x86_64-linux-gnu/libm-2.31.so ..
+--3826--   .. CRC mismatch (computed fcb42c76 wanted f6c95789)
+--3826--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libm-2.31.so ..
+--3826--   .. CRC is valid
+--3826-- Reading syms from /usr/lib/x86_64-linux-gnu/libgcc_s.so.1
+--3826--    object doesn't have a symbol table
+--3826-- REDIR: 0x4ae9600 (libc.so.6:memmove) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3826-- REDIR: 0x4ae8900 (libc.so.6:strncpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3826-- REDIR: 0x4ae9930 (libc.so.6:strcasecmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3826-- REDIR: 0x4ae8220 (libc.so.6:strcat) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3826-- REDIR: 0x4ae8960 (libc.so.6:rindex) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3826-- REDIR: 0x4aeadd0 (libc.so.6:rawmemchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3826-- REDIR: 0x4b05e60 (libc.so.6:wmemchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3826-- REDIR: 0x4b059a0 (libc.so.6:wcscmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3826-- REDIR: 0x4ae9760 (libc.so.6:mempcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3826-- REDIR: 0x4ae9590 (libc.so.6:bcmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3826-- REDIR: 0x4ae8890 (libc.so.6:strncmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3826-- REDIR: 0x4ae82d0 (libc.so.6:strcmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3826-- REDIR: 0x4ae96c0 (libc.so.6:memset) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3826-- REDIR: 0x4b05960 (libc.so.6:wcschr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3826-- REDIR: 0x4ae87f0 (libc.so.6:strnlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3826-- REDIR: 0x4ae83b0 (libc.so.6:strcspn) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3826-- REDIR: 0x4ae9980 (libc.so.6:strncasecmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3826-- REDIR: 0x4ae8350 (libc.so.6:strcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3826-- REDIR: 0x4ae9ad0 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3826-- REDIR: 0x4b070d0 (libc.so.6:wcsnlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3826-- REDIR: 0x4b059e0 (libc.so.6:wcscpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3826-- REDIR: 0x4ae89a0 (libc.so.6:strpbrk) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3826-- REDIR: 0x4ae8280 (libc.so.6:index) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3826-- REDIR: 0x4ae87b0 (libc.so.6:strlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3826-- REDIR: 0x4af1d20 (libc.so.6:memrchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3826-- REDIR: 0x4ae99d0 (libc.so.6:strcasecmp_l) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3826-- REDIR: 0x4ae9550 (libc.so.6:memchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3826-- REDIR: 0x4b05ab0 (libc.so.6:wcslen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3826-- REDIR: 0x4ae8c60 (libc.so.6:strspn) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3826-- REDIR: 0x4ae98d0 (libc.so.6:stpncpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3826-- REDIR: 0x4ae9870 (libc.so.6:stpcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3826-- REDIR: 0x4aeae10 (libc.so.6:strchrnul) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3826-- REDIR: 0x4ae9a20 (libc.so.6:strncasecmp_l) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3826-- REDIR: 0x4bd1490 (libc.so.6:__strrchr_avx2) redirected to 0x483ea10 (rindex)
+--3826-- REDIR: 0x4ae3260 (libc.so.6:malloc) redirected to 0x483b780 (malloc)
+--3826-- REDIR: 0x490eb20 (libstdc++.so.6:operator new(unsigned long)) redirected to 0x483bdf0 (operator new(unsigned long))
+--3826-- REDIR: 0x490eb80 (libstdc++.so.6:operator new[](unsigned long)) redirected to 0x483c510 (operator new[](unsigned long))
+--3826-- REDIR: 0x4bd12a0 (libc.so.6:__strchrnul_avx2) redirected to 0x4843540 (strchrnul)
+--3826-- REDIR: 0x4ae9120 (libc.so.6:__GI_strstr) redirected to 0x4843ca0 (__strstr_sse2)
+--3826-- REDIR: 0x4ae3850 (libc.so.6:free) redirected to 0x483c9d0 (free)
+--3826-- REDIR: 0x4bd4650 (libc.so.6:__mempcpy_avx_unaligned_erms) redirected to 0x4843660 (mempcpy)
+--3826-- REDIR: 0x4bd1660 (libc.so.6:__strlen_avx2) redirected to 0x483ef40 (strlen)
+--3826-- REDIR: 0x4bd4670 (libc.so.6:__memcpy_avx_unaligned_erms) redirected to 0x48429f0 (memmove)
+--3826-- REDIR: 0x4bcdc50 (libc.so.6:__memcmp_avx2_movbe) redirected to 0x48421e0 (bcmp)
+--3826-- REDIR: 0x4bccb60 (libc.so.6:__strcmp_avx2) redirected to 0x483fed0 (strcmp)
+==3826== Invalid read of size 8
+==3826==    at 0x10ACBE: showTransactions(_rep_transactions*) (in /home/tomas/Coding/bmsystem/main)
+==3826==    by 0x1096CA: main (in /home/tomas/Coding/bmsystem/main)
+==3826==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+==3826== 
+==3826== 
+==3826== Process terminating with default action of signal 11 (SIGSEGV)
+==3826==  Access not within mapped region at address 0x0
+==3826==    at 0x10ACBE: showTransactions(_rep_transactions*) (in /home/tomas/Coding/bmsystem/main)
+==3826==    by 0x1096CA: main (in /home/tomas/Coding/bmsystem/main)
+==3826==  If you believe this happened as a result of a stack
+==3826==  overflow in your program's main thread (unlikely but
+==3826==  possible), you can try to increase the size of the
+==3826==  main thread stack using the --main-stacksize= flag.
+==3826==  The main thread stack size used in this run was 8388608.
+==3826== 
+==3826== HEAP SUMMARY:
+==3826==     in use at exit: 326 bytes in 9 blocks
+==3826==   total heap usage: 29 allocs, 20 frees, 89,886 bytes allocated
+==3826== 
+==3826== Searching for pointers to 9 not-freed blocks
+==3826== Checked 114,816 bytes
+==3826== 
+==3826== 10 bytes in 1 blocks are definitely lost in loss record 1 of 6
+==3826==    at 0x483C583: operator new[](unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3826==    by 0x109433: selectUser(_rep_table*) (in /home/tomas/Coding/bmsystem/main)
+==3826==    by 0x1096AB: main (in /home/tomas/Coding/bmsystem/main)
+==3826== 
+==3826== 16 bytes in 1 blocks are still reachable in loss record 2 of 6
+==3826==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3826==    by 0x109F4A: createTable() (in /home/tomas/Coding/bmsystem/main)
+==3826==    by 0x1094B0: main (in /home/tomas/Coding/bmsystem/main)
+==3826== 
+==3826== 20 bytes in 2 blocks are still reachable in loss record 3 of 6
+==3826==    at 0x483C583: operator new[](unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3826==    by 0x109509: main (in /home/tomas/Coding/bmsystem/main)
+==3826== 
+==3826== 64 bytes in 2 blocks are still reachable in loss record 4 of 6
+==3826==    at 0x483C583: operator new[](unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3826==    by 0x1094FB: main (in /home/tomas/Coding/bmsystem/main)
+==3826== 
+==3826== 104 bytes in 1 blocks are still reachable in loss record 5 of 6
+==3826==    at 0x483C583: operator new[](unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3826==    by 0x109F58: createTable() (in /home/tomas/Coding/bmsystem/main)
+==3826==    by 0x1094B0: main (in /home/tomas/Coding/bmsystem/main)
+==3826== 
+==3826== 112 bytes in 2 blocks are still reachable in loss record 6 of 6
+==3826==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3826==    by 0x109A4E: createUser(unsigned int, char*, char*, int) (in /home/tomas/Coding/bmsystem/main)
+==3826==    by 0x1095CC: main (in /home/tomas/Coding/bmsystem/main)
+==3826== 
+==3826== LEAK SUMMARY:
+==3826==    definitely lost: 10 bytes in 1 blocks
+==3826==    indirectly lost: 0 bytes in 0 blocks
+==3826==      possibly lost: 0 bytes in 0 blocks
+==3826==    still reachable: 316 bytes in 8 blocks
+==3826==         suppressed: 0 bytes in 0 blocks
+==3826== 
+==3826== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
+==3826== 
+==3826== 1 errors in context 1 of 2:
+==3826== Invalid read of size 8
+==3826==    at 0x10ACBE: showTransactions(_rep_transactions*) (in /home/tomas/Coding/bmsystem/main)
+==3826==    by 0x1096CA: main (in /home/tomas/Coding/bmsystem/main)
+==3826==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+==3826== 
+==3826== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)

@@ -100,9 +100,9 @@ int main (){
 
 
         //show transaction book of user
-        }else if(option == 5){
+        }else if(option == 6){
             User user = selectUser(users_table);
-            if(user != NULL)
+            if(user != NULL && transactions(user) != NULL)
                 showTransactions(transactions(user));
             printf("\n[0] Back");
             int q = getInputUser();
@@ -112,34 +112,36 @@ int main (){
             
 
         //make transaction
-        }else if(option == 6){
-            printf("Select Who makes the transaction:");
+        }else if(option == 5){
+            printf("Select Who makes the transaction:\n");
             User user = selectUser(users_table);
-            if(transactions(user) == NULL){
-                Transactions t = createEmptyTransactions();
-                user = assignTransactions(user, t);
-            }
+            if(user != NULL){
+                if(transactions(user) == NULL){
+                    Transactions t = createEmptyTransactions();
+                    user = assignTransactions(user, t);
+                }
 
-            // get amount and user_account:ArregloChars
-            nat amount; ArregloChars to_account;
-            printf("Reciever Account:");
-            leerChars(to_account);
-            printf("Transaction Amount:");
-            scanf("%d", &amount);
+                // get amount and user_account:ArregloChars
+                nat amount; 
+                ArregloChars to_account = new char[MAX_UID];
+                printf("Reciever Account:");
+                leerChars(to_account);
+                printf("Transaction Amount:");
+                scanf("%d", &amount);
             
-            if (balance(user) - amount < 0)
-                printf("Insufficient balance\n");
-            else{
-                Transaction to_add = createTransation(amount, to_account);
-                user = assignTransactions(user, addToTransactions(to_add, transactions(user)));
-                user = addBalance(user, -amount);
-                printf("Transaction successfull\n");
+                if (balance(user) - amount < 0)
+                    printf("Insufficient balance\n");
+                else{
+                    Transaction to_add = createTransation(amount, to_account);
+                    user = assignTransactions(user, addToTransactions(to_add, transactions(user)));
+                    user = addBalance(user, -amount);
+                    printf("Transaction successfull\n");
+                }
             }
     
 
         //clear screen
         }else if(option == 8){
-            User user = selectUser(users_table);
             initialScreen();
 
 
