@@ -115,11 +115,15 @@ int main (){
         }else if(option == 6){
             printf("Select Who makes the transaction:");
             User user = selectUser(users_table);
-            if(transactions(user) == NULL)
+            if(transactions(user) == NULL){
                 Transactions t = createEmptyTransactions();
+                // Transaction to_add = ... (call crateTransaction (TODO))   
+                // t = addToTransactions(to_add, t); (TODO)
+                user = assignTransactions(user, t);
+            }
+            
             //select the amount and the reciever of the transaction
             //assing the values 
-            user = assignTransactions(user, t);
             //print the transaction maded
 
 
