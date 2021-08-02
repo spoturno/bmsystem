@@ -104,7 +104,7 @@ int main (){
             User user = selectUser(users_table);
             if(user != NULL && transactions(user) != NULL)
                 showTransactions(transactions(user));
-            printf("\n[0] Back");
+            printf("\n\n[0] Back\n");
             int q = getInputUser();
             if(q == 0)
                 initialScreen();

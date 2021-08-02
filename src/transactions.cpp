@@ -125,8 +125,8 @@ Transaction minTransaction(Transaction tran){
 
 void showTransactions(Transactions t){
     assert(!isEmptyTransaction(t->tran));
-    printf("Transactions of User | Total: %d", t->total_transactions);
-    printf("--------------------------------------");
+    printf("\nTransactions of User | Total: %d\n", t->total_transactions);
+    printf("--------------------------------------\n");
     formattedTransaction(t->tran, 0);
 }
 
