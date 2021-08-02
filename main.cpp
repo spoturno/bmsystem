@@ -115,7 +115,7 @@ int main (){
         }else if(option == 5){
             printf("Select Who makes the transaction:\n");
             User user = selectUser(users_table);
-            if(user != NULL){
+            if(user != NULL){ 
                 if(transactions(user) == NULL){
                     Transactions t = createEmptyTransactions();
                     user = assignTransactions(user, t);
@@ -124,18 +124,28 @@ int main (){
                 // get amount and user_account:ArregloChars
                 nat amount; 
                 ArregloChars to_account = new char[MAX_UID];
-                printf("Reciever Account:");
-                leerChars(to_account);
-                printf("Transaction Amount:");
-                scanf("%d", &amount);
+                while(1){
+                    printf("Reciever Account:");
+                    leerChars(to_account);
+                    User reciever = searchUser(users_table, to_account);
+                    if(reciever == NULL){
+                        printf("User with that Id doesn't exists\n");
+                        printf("Try Again\n");
+                    } else{
+                        printf("Transaction Amount:");
+                        scanf("%d", &amount);
             
-                if (balance(user) - amount < 0)
-                    printf("Insufficient balance\n");
-                else{
-                    Transaction to_add = createTransation(amount, to_account);
-                    user = assignTransactions(user, addToTransactions(to_add, transactions(user)));
-                    user = addBalance(user, -amount);
-                    printf("Transaction successfull\n");
+                        if (balance(user) - amount < 0)
+                            printf("Insufficient balance\n");
+                        else{
+                            Transaction to_add = createTransation(amount, to_account);
+                            user = assignTransactions(user, addToTransactions(to_add, transactions(user)));
+                            user = addBalance(user, -amount);
+                            reciever = addBalance(reciever, amount);
+                            printf("Transaction successfull\n");
+                        }
+                        break;
+                    } 
                 }
             }
     
