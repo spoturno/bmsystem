@@ -57,7 +57,7 @@ int main (){
             salir = true;
             printf("See you later!\n");
 
-        //add user
+            //add user
         } else if (option == 1){
             nat age; int balance; char temp;
             ArregloChars name = new char[MAX_NAME];
@@ -78,19 +78,19 @@ int main (){
             users_table = addUser(user, users_table);
             printf("\n-New user added successfully-\n\n");
 
-        //modify user data
+            //modify user data
         } else if(option == 2){ 
             User user = selectUser(users_table);
             user = modifyUser(user);
             printf("User modified correctly\n\n");
-    
-        //show user book
+
+            //show user book
         } else if(option == 3){
             printf("\n");
             printTable(users_table);
 
-            
-        //remove user account
+
+            //remove user account
         } else if(option == 4){
             User user = selectUser(users_table);
             if(user != NULL){
@@ -99,7 +99,7 @@ int main (){
             } 
 
 
-        //show transaction book of user
+            //show transaction book of user
         }else if(option == 6){
             User user = selectUser(users_table);
             if(user != NULL && transactions(user) != NULL)
@@ -109,48 +109,57 @@ int main (){
             if(q == 0)
                 initialScreen();
             //else make sth (TODO) 
-            
 
-        //make transaction
+
+            //make transaction
         }else if(option == 5){
-            printf("Select Who makes the transaction:\n");
-            User user = selectUser(users_table);
-            if(user != NULL){ 
-                if(transactions(user) == NULL){
-                    Transactions t = createEmptyTransactions();
-                    user = assignTransactions(user, t);
+            printf("Select Who makes the transaction\n");
+            ArregloChars id = new char[MAX_UID];
+            while(1){ 
+                printf("Insert sender:");
+                leerChars(id);
+                User user = searchUser(users_table, id);
+                if(user == NULL){
+                    printf("User with that Id doesn't exists\n");
+                    printf("Try Again:\n");
                 }
+                else{
+                    if(transactions(user) == NULL){
+                        Transactions t = createEmptyTransactions();
+                        user = assignTransactions(user, t);
+                    }
 
-                // get amount and user_account:ArregloChars
-                nat amount; 
-                ArregloChars to_account = new char[MAX_UID];
-                while(1){
-                    printf("Reciever Account:");
-                    leerChars(to_account);
-                    User reciever = searchUser(users_table, to_account);
-                    if(reciever == NULL){
-                        printf("User with that Id doesn't exists\n");
-                        printf("Try Again\n");
-                    } else{
-                        printf("Transaction Amount:");
-                        scanf("%d", &amount);
-            
-                        if (balance(user) - amount < 0)
-                            printf("Insufficient balance\n");
-                        else{
-                            Transaction to_add = createTransation(amount, to_account);
-                            user = assignTransactions(user, addToTransactions(to_add, transactions(user)));
-                            user = addBalance(user, -amount);
-                            reciever = addBalance(reciever, amount);
-                            printf("Transaction successfull\n");
-                        }
-                        break;
-                    } 
+                    // get amount and user_account:ArregloChars
+                    nat amount; 
+                    ArregloChars to_account = new char[MAX_UID];
+                    while(1){
+                        printf("Reciever Account:");
+                        leerChars(to_account);
+                        User reciever = searchUser(users_table, to_account);
+                        if(reciever == NULL){
+                            printf("User with that Id doesn't exists\n");
+                            printf("Try Again\n");
+                        } else{
+                            printf("Transaction Amount:");
+                            scanf("%d", &amount);
+
+                            if (balance(user) - amount < 0)
+                                printf("Insufficient balance\n");
+                            else{
+                                Transaction to_add = createTransation(amount, to_account);
+                                user = assignTransactions(user, addToTransactions(to_add, transactions(user)));
+                                user = addBalance(user, -amount);
+                                reciever = addBalance(reciever, amount);
+                                printf("Transaction successfull\n");
+                            }
+                            break;
+                        } 
+                    }
                 }
             }
-    
 
-        //clear screen
+
+            //clear screen
         }else if(option == 8){
             initialScreen();
 
