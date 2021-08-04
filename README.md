@@ -27,27 +27,24 @@ This module represents all the transaction made by one user in the userTable. Ea
 ## Installation
 1. `git clone [https_or_ssh_link]`
 2. `cd bmsystem`
-3. `g++ -c src/user.cpp -o obj/user.o`
-4. `g++ -c src/utils.cpp -o obj/utils.o`
-5. `g++ -c src/userTable.cpp -o obj/userTable.o`
-6. `g++ -c src/timer.cpp -o obj/userTable.o`
-7. `g++ -c src/transactions.cpp -o obj/transactions.o`
-8. `g++ -c main.cpp -o obj/main.o`
-9. `g++ obj/main.o obj/utils.o obj/user.o obj/userTable.o obj/transactions.o -o main`
-10. `./main`
+3. `make` compiles and generated de exe file
+4. `./main`
 
 ## Usage
 When executing the program the first thing that is found is the initial screen where you should choose on of the following options: 
-- Insert new user account [1]
-- Update user information [2]
-- User book [3]
-- Remove user account [4]
-- Transaction book [5]
-- CLEAR SCREEN [6]
-- Add balance to account [7]
-- Exit [0]
+
+    [1] Insert new user account           
+    [2] Update user information           
+    [3] User book                         
+    [4] Remove user account               
+    [5] Make transaction                  
+    [6] Transaction user book             
+    [7] Add balance to Account            
+    [8] CLEAR SCREEN                      
+    [0] Exit                              
 
 By inserting a new user account you will be requested with some user information such as Name, Identification, Age, Balance (TODO: More formal data). Once you filled each blank, your new user will be added dynamically and correctly. If you choose to update user information you'll be asked to select the user identification of the user you want to select (table of users will be shown), once selected you can change a single entry of data of one user (Notice that this will only replace the current value of the data that you want to change).
+
 After that if you want to remove a user, same as before, you will be asked to select the user by his id, once did that the user is removed from the table of users (userTable) and also his memory is free'd. 
 Transaction book (TODO).
 Clear Screen just clears the screen and show again the inital screen to make it cleaner. This also could be implemented reading and writing the stream, selecting the lines that are not supposed to be shown. Finally to exit the program just input `0` on the stream.
