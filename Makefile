@@ -1,8 +1,8 @@
 all: main
 
-.PHONY: all clean testing
+.PHONY: all clean_bin clean_test clean testing
 
-MODULOS = utils user userTable
+MODULOS = utils user userTable timer transactions
 
 # directories
 HDIR = include
@@ -14,8 +14,8 @@ TESTDIR = tests
 # extensions
 EXT = cpp
 # compilator
-CC = g++ #gcc -x c
-LD = g++ #gcc
+CC = g++ #gcc
+LD = g++ # gcc
 
 
 CFLAGS = -Wall -Werror -I$(HDIR) -g -DNDEBUG
@@ -28,19 +28,18 @@ MAIN = main
 EXE = main
 
 $(ODIR)/$(MAIN).o:$(MAIN).$(EXT) Makefile
-	@printf 'Compiling $(<) \n'; \
-	$(CC) $(CFLAGS) -c $< -o @
+	@printf 'Compilando $(<) \n'; \
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(ODIR)/%.o: $(CPPDIR)/%.$(EXT) $(HDIR)/%.h
-	@printf 'Compiling $(<) \n ;' \
-	$(CC) $(CCFLAGS) -c $< -o $@ ; \
+	@printf 'Compilando $(<) \n'; \
+	$(CC) $(CCFLAGS) -c $< -o $@ 
 
 
 $(EXE):$(ODIR)/$(MAIN).o $(OS)
-	@printf 'Compiling and linking $(@) \n ;' \
+	@printf 'Compilando y enlazando $(@) \n'; \
 	$(LD) $(CCFLAGS) $^ -o $@
 
-# definir luego $LIB
 clean_bin:
 	@rm -f $(EXE) $(ODIR)/$(MAIN).o $(OS)
 
