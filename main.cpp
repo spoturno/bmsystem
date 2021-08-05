@@ -28,7 +28,7 @@ void initialScreen(){
 
 int getInputUser(){
     int option;
-    printf("Enter option:");
+    printf("\nEnter option:");
     scanf("%d", &option);
     return option;
 }
