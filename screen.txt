@@ -9,10 +9,10 @@
  __________________________________________
 |                                          |
 |                                          |
-|    [1] Insert new user account           |
+|    [1] Open new user account             |
 |    [2] Update user information           |
 |    [3] User book                         |
-|    [4] Remove user account               |
+|    [4] Close user account                |
 |    [5] Make transaction                  |
 |    [6] Transaction user book             |
 |    [7] Add balance to Account            |
