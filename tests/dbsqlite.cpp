@@ -28,6 +28,7 @@ int main(int argc, char** argv){
     string sql("INSERT INTO USER VALUES(1, 'BILL', 'GATES', 30, 'PALO ALTO', 1000.0);"
                "INSERT INTO USER VALUES(2, 'STEVE', 'FAKE', 20, 'SEATTLE', 300.2);"
                "INSERT INTO USER VALUES(3, 'TOMAS', 'SPOTURNO', 20, 'MVD', 4500.2);");
+
     exit = sqlite3_exec(DB, sql.c_str(), NULL, 0, &messageError);
     if(exit != SQLITE_OK){
         fprintf(stderr, "Error Insert");
