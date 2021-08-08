@@ -24,9 +24,8 @@ int main(void){
         int idx = sqlite3_bind_parameter_index(res, "@id");
         int value = 3;
         sqlite3_bind_int(res, idx, value);
-    }else{
+    }else
         fprintf(stderr, "Failed to executre statement: %s\n", sqlite3_errmsg(db));
-    }
 
     int step = sqlite3_step(res);
     if(step == SQLITE_ROW){
