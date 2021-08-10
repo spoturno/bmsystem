@@ -2,6 +2,7 @@
 #define __DBASE__
 
 #include <sqlite3.h>
+#include <stdbool.h>
 #include "../include/user.h"
 #include "../include/utils.h"
 
@@ -11,12 +12,12 @@
 /*
  * create the database binary file
  */
-sqlite3 createDatabase();
+void createDatabase();
 
 /*
  * add a user data to the database
  */
-sqlite3 addUserToDatabase(User user);
+void addUserToDatabase(User user);
 
 /*
  * returns the user with acc (account number) 
