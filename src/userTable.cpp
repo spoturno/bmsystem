@@ -13,11 +13,11 @@ struct _rep_table{
     nat count;
 };
 
-//the key is the user identification
-nat hashFunction(char* key){
+//the account is the user identification
+nat hashFunction(char* account){
     nat hashVal = 0;
-    for(nat i=0; i<sizeof(key); i++)
-       hashVal= 37 * hashVal + key[i];
+    for(nat i=0; i<sizeof(account); i++)
+       hashVal= 37 * hashVal + account[i];
     return hashVal % MAX_USERS;
 }
 
@@ -31,7 +31,7 @@ Table createTable(){
 }
 
 Table addUser(User user, Table table){
-    nat index = hashFunction(key(user)); 
+    nat index = hashFunction(account(user)); 
     User current_user = table->array[index];
     if(current_user == NULL){
         if(table->count == MAX_USERS){
@@ -44,7 +44,7 @@ Table addUser(User user, Table table){
        table->count++;
     } else{
         //case 1 - update the value
-        if(strcmp(key(current_user), key(user)) == 0){
+        if(strcmp(account(current_user), account(user)) == 0){
             table->array[index] = user;
         } else{//case 2 - insert in chained users
             table = handleCollision(user, table, index);
@@ -61,12 +61,12 @@ Table handleCollision(User user, Table table, nat index){
 }
 
 Table removeUser(User user, Table table){
-    nat index = hashFunction(key(user));
+    nat index = hashFunction(account(user));
     User temp = table->array[index];
     if(temp == NULL)
         return table;
     else{
-        if(next(temp) == NULL && strcmp(key(temp), key(user)) == 0){
+        if(next(temp) == NULL && strcmp(account(temp), account(user)) == 0){
             //no collision chain. Just remove temp.
             table->array[index] = NULL;
             freeUser(temp);
@@ -74,7 +74,7 @@ Table removeUser(User user, Table table){
             return table;
         }else if(next(temp) != NULL)
             // collision exists
-            if(strcmp(key(temp), key(user)) == 0){
+            if(strcmp(account(temp), account(user)) == 0){
                 table->array[index] = next(temp);
                 freeUser(temp);
                 table->count--;
@@ -83,7 +83,7 @@ Table removeUser(User user, Table table){
             User current = next(temp);
             User previous = NULL; 
             while(current){
-                if(strcmp(key(user), key(current)) == 0){
+                if(strcmp(account(user), account(current)) == 0){
                     table->count--;
                     if(previous == NULL){
                         table->array[index] = refNextUser(table->array[index], next(current));
@@ -103,8 +103,8 @@ Table removeUser(User user, Table table){
 }
 
 bool contains(Table table, User user){
-    int hashed_key = hashFunction(key(user));
-    User temp = table->array[hashed_key];
+    int hashed_account = hashFunction(account(user));
+    User temp = table->array[hashed_account];
     while(next(temp) != NULL){
         if(temp == user)
             return true;
@@ -117,11 +117,11 @@ User searchUser(Table table, ArregloChars id){
     nat index = hashFunction(id);
     User temp = table->array[index];
     while(next(temp) != NULL){
-        if(strcmp(key(temp), id) == 0)
+        if(strcmp(account(temp), id) == 0)
             return temp;
         temp = next(temp);
     }
-    return (strcmp(key(temp), id) == 0) ? temp : NULL;
+    return (strcmp(account(temp), id) == 0) ? temp : NULL;
 }
 
 nat numberOfUsers(Table table){
@@ -161,7 +161,7 @@ void printTable(Table table){
     for(int i=0; i<MAX_USERS; i++){
         if(table->array[i] != NULL){
             struct tm * date = userAdmissionDate(table->array[i]);
-            printf("| %-15s | %-15s | %-4d | $%-8d | %d/%d/%d  |\r\n", key(table->array[i]), name(table->array[i]), age(table->array[i]), balance(table->array[i]), date->tm_mday, date->tm_mon+1, date->tm_year+1900); 
+            printf("| %-15s | %-15s | %-4d | $%-8d | %d/%d/%d  |\r\n", account(table->array[i]), name(table->array[i]), age(table->array[i]), balance(table->array[i]), date->tm_mday, date->tm_mon+1, date->tm_year+1900); 
             printUserChain(table->array[i]);
         }
     }

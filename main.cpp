@@ -8,9 +8,30 @@
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
+#include <sqlite3.h>
 
 #define MAX_NAME 32
-#define MAX_UID 10
+#define MAX_UID 9
+
+//function to read the test file and show results
+void test(){
+    char buffer[10000];
+    FILE * file = NULL; 
+    const char *filename = "~/Coding/bmsystem/tests/01.in";
+    file = fopen("tests/01.in", "r");
+    if(file == NULL){
+        fprintf(stderr, "Can't open file\n");
+        return;
+    }
+    while(!feof(file)){
+        ArregloChars name = new char[MAX_NAME];
+        ArregloChars account = new char[MAX_UID]; 
+        int age;
+        fscanf(file, "%s%d%s", name, &age, account);
+        //User user = createUser();
+    }
+    
+}
 
 void initialScreen(){
     printf("\e[1;1H\e[2J");
@@ -34,11 +55,11 @@ int getInputUser(){
 }
 
 User selectUser(Table table){
-    ArregloChars id = new char[MAX_UID];
+    ArregloChars account = new char[MAX_UID];
     printTable(table);
     printf("Inser user Id:");
-    leerChars(id);
-    User user = searchUser(table, id);
+    leerChars(account);
+    User user = searchUser(table, account);
     if(user == NULL)
         printf("User with that Id doesn't exists\n");
     return (user == NULL) ? NULL : user;
@@ -61,7 +82,7 @@ int main (){
         } else if (option == 1){
             nat age; int balance; char temp;
             ArregloChars name = new char[MAX_NAME];
-            ArregloChars uid = new char[MAX_UID]; 
+            ArregloChars account = new char[MAX_UID]; 
 
             printf("Full Name:");
             scanf("%c", &temp);
@@ -69,12 +90,12 @@ int main (){
             printf("Age:");
             age = leerNat();
             printf("Identification:");
-            leerChars(uid);
+            leerChars(account);
             printf("Account balance:");
             scanf("%d", &balance);
             printf("\n");
 
-            User user = createUser(age, name, uid, balance);
+            User user = createUser(age, name, account, balance);
             users_table = addUser(user, users_table);
             printf("\n-New user added successfully-\n\n");
 
@@ -114,11 +135,11 @@ int main (){
             //make transaction
         }else if(option == 5){
             printf("Select Who makes the transaction\n");
-            ArregloChars id = new char[MAX_UID];
+            ArregloChars account = new char[MAX_UID];
             while(1){ 
                 printf("Insert sender:");
-                leerChars(id);
-                User user = searchUser(users_table, id);
+                leerChars(account);
+                User user = searchUser(users_table, account);
                 if(user == NULL){
                     printf("User with that Id doesn't exists\n");
                     printf("Try Again:\n");

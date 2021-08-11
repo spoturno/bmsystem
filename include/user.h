@@ -67,7 +67,7 @@ ArregloChars name(User user);
 /*
  * returns an unique key from the user
  */
-ArregloChars key(User user);
+ArregloChars account(User user);
 
 /*
  * returns the time when user got logged in

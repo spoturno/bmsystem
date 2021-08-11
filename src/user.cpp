@@ -11,7 +11,7 @@
 #define MAX_NAME 32
 
 struct _rep_user{
-    ArregloChars id;
+    ArregloChars account;
     ArregloChars name;
     nat age;
     User next;
@@ -20,10 +20,10 @@ struct _rep_user{
     Transactions trc;
 };
 
-User createUser(nat age, ArregloChars name, ArregloChars id, int balance){
+User createUser(nat age, ArregloChars name, ArregloChars account, int balance){
     User user = new _rep_user;
     user->age = age;
-    user->id = id;
+    user->account = account;
     user->name = name;
     user->next = NULL;
     user->balance = balance;
@@ -40,16 +40,16 @@ User next(User user)
 //Reuquires Update (TODO)
 User modifyUser(User user){
     nat option;
-    printf("[1] Id\n[2] Name\n[3] Age\n[4] Balance\n");
+    printf("[1] Account\n[2] Name\n[3] Age\n[4] Balance\n");
     printf("Select what you want to modify:");
     scanf("%d", &option);
 
     if(option == 1){
-        ArregloChars new_id = new char[MAX_UID];
-        printf("Inser new Id:");
-        leerChars(new_id);
-        ArregloChars temp = user->id;
-        user->id = new_id;
+        ArregloChars new_account = new char[MAX_UID];
+        printf("Inser new account number:");
+        leerChars(new_account);
+        ArregloChars temp = user->account;
+        user->account = new_account;
         //delete[] temp;
 
     } else if(option == 2){
@@ -97,8 +97,8 @@ void freeUser(User user){
     delete user;
 }
 
-ArregloChars key(User user){
-    return user->id;
+ArregloChars account(User user){
+    return user->account;
 }
 
 int age(User user){
@@ -127,7 +127,7 @@ void printUserChain(User user){
     User temp = user;
     while(temp->next != NULL){
         temp = temp->next;
-        printf("| %-15s | %-15s | %-4d | $%-8d | -%d/%d/%d  |\r\n", temp->id, temp->name, temp->age, temp->balance, temp->time->tm_yday, temp->time->tm_mon, temp->time->tm_year); 
+        printf("| %-15s | %-15s | %-4d | $%-8d | -%d/%d/%d  |\r\n", temp->account, temp->name, temp->age, temp->balance, temp->time->tm_yday, temp->time->tm_mon, temp->time->tm_year); 
     }
     temp = NULL;
     delete temp;
