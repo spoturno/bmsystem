@@ -161,7 +161,8 @@ void printTable(Table table){
     for(int i=0; i<MAX_USERS; i++){
         if(table->array[i] != NULL){
             struct tm * date = userAdmissionDate(table->array[i]);
-            printf("| %-15s | %-15s | %-4d | $%-8d | %d/%d/%d  |\r\n", account(table->array[i]), name(table->array[i]), age(table->array[i]), balance(table->array[i]), date->tm_mday, date->tm_mon+1, date->tm_year+1900); 
+            //TODO: add last name.
+            printf("| %-15s | %-15s | %-4d | $%-8d | %d/%d/%d  |\r\n", account(table->array[i]), first_name(table->array[i]), age(table->array[i]), balance(table->array[i]), date->tm_mday, date->tm_mon+1, date->tm_year+1900); 
             printUserChain(table->array[i]);
         }
     }
