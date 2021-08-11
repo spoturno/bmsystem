@@ -30,7 +30,7 @@ void test(Table user_table){
         ArregloChars last_name = new char[MAX_FIRST_NAME];
         ArregloChars account = new char[MAX_ACC]; 
         int age, balance; 
-        fscanf(file, "%s%d%d%s", first_name, &age, &balance, account);
+        fscanf(file, "%s%s%d%d%s", first_name, last_name, &age, &balance, account);
         User user = createUser(first_name, last_name, age, account, balance);
         user_table = addUser(user, user_table);
     }
@@ -202,6 +202,9 @@ int main (){
                 user = addBalance(user, a_balance);
                 printf("Balance added successfully\n\n");
             }
+        } else if(option == 99){
+            test(users_table);
+            printf("Random users added successfully.\n");
         }
     }
     //delete [] also ArregloChars
