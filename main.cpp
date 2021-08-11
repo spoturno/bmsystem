@@ -10,11 +10,13 @@
 #include <assert.h>
 #include <sqlite3.h>
 
-#define MAX_NAME 32
-#define MAX_UID 9
+#define MAX_FIRST_NAME 32
+#define MAX_LAST_NAME 32
+#define MAX_ACC 9 
+
 
 //function to read the test file and show results
-void test(){
+void test(Table user_table){
     char buffer[10000];
     FILE * file = NULL; 
     const char *filename = "~/Coding/bmsystem/tests/01.in";
@@ -24,13 +26,13 @@ void test(){
         return;
     }
     while(!feof(file)){
-        ArregloChars name = new char[MAX_NAME];
-        ArregloChars account = new char[MAX_UID]; 
-        int age;
-        fscanf(file, "%s%d%s", name, &age, account);
-        //User user = createUser();
+        ArregloChars name = new char[MAX_FIRST_NAME];
+        ArregloChars account = new char[MAX_ACC]; 
+        int age, balance; 
+        fscanf(file, "%s%d%d%s", name, &age, &balance, account);
+        User user = createUser(age, name, account, balance);
+        user_table = addUser(user, user_table);
     }
-    
 }
 
 void initialScreen(){
@@ -55,7 +57,7 @@ int getInputUser(){
 }
 
 User selectUser(Table table){
-    ArregloChars account = new char[MAX_UID];
+    ArregloChars account = new char[MAX_ACC];
     printTable(table);
     printf("Inser user Id:");
     leerChars(account);
@@ -81,9 +83,7 @@ int main (){
             //add user
         } else if (option == 1){
             nat age; int balance; char temp;
-            ArregloChars name = new char[MAX_NAME];
-            ArregloChars account = new char[MAX_UID]; 
-
+            ArregloChars name = new char[MAX_FIRST_NAME]; ArregloChars account = new char[MAX_ACC]; 
             printf("Full Name:");
             scanf("%c", &temp);
             scanf("%[^\n]", name);
@@ -135,7 +135,7 @@ int main (){
             //make transaction
         }else if(option == 5){
             printf("Select Who makes the transaction\n");
-            ArregloChars account = new char[MAX_UID];
+            ArregloChars account = new char[MAX_ACC];
             while(1){ 
                 printf("Insert sender:");
                 leerChars(account);
@@ -152,7 +152,7 @@ int main (){
 
                     // get amount and user_account:ArregloChars
                     nat amount; 
-                    ArregloChars to_account = new char[MAX_UID];
+                    ArregloChars to_account = new char[MAX_ACC];
                     while(1){
                         printf("Reciever Account:");
                         leerChars(to_account);
