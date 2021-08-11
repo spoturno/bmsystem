@@ -12,7 +12,8 @@
 
 struct _rep_user{
     ArregloChars account;
-    ArregloChars name;
+    ArregloChars first_name;
+    ArregloChars last_name;
     nat age;
     User next;
     struct tm *time;
@@ -20,11 +21,12 @@ struct _rep_user{
     Transactions trc;
 };
 
-User createUser(nat age, ArregloChars name, ArregloChars account, int balance){
+User createUser(ArregloChars first_name,ArregloChars last_name,nat age, ArregloChars account, int balance){
     User user = new _rep_user;
     user->age = age;
     user->account = account;
-    user->name = name;
+    user->first_name = first_name;
+    user->last_name = last_name;
     user->next = NULL;
     user->balance = balance;
     user->time = getCurrentTime();
@@ -38,6 +40,7 @@ User next(User user)
 }
 
 //Reuquires Update (TODO)
+//TODO: modify last name:
 User modifyUser(User user){
     nat option;
     printf("[1] Account\n[2] Name\n[3] Age\n[4] Balance\n");
@@ -53,11 +56,11 @@ User modifyUser(User user){
         //delete[] temp;
 
     } else if(option == 2){
-        ArregloChars new_name = new char[MAX_NAME];
+        ArregloChars new_first_name = new char[MAX_NAME];
         printf("Insert new Name");
-        leerChars(new_name);
-        ArregloChars temp = user->name;
-        user->name = new_name;
+        leerChars(new_first_name);
+        ArregloChars temp = user->first_name;
+        user->first_name = new_first_name;
         delete[] temp;
 
     } else if(option == 3){
@@ -114,8 +117,12 @@ User addBalance(User user, int a_balance){
     return user;
 }
 
-ArregloChars name(User user){
-    return user->name;
+ArregloChars first_name(User user){
+    return user->first_name;
+}
+
+ArregloChars last_name(User user){
+    return user->last_name;
 }
 
 struct tm * userAdmissionDate(User user){
@@ -127,7 +134,7 @@ void printUserChain(User user){
     User temp = user;
     while(temp->next != NULL){
         temp = temp->next;
-        printf("| %-15s | %-15s | %-4d | $%-8d | -%d/%d/%d  |\r\n", temp->account, temp->name, temp->age, temp->balance, temp->time->tm_yday, temp->time->tm_mon, temp->time->tm_year); 
+        printf("| %-15s | %-15s | %-4d | $%-8d | -%d/%d/%d  |\r\n", temp->account, temp->first_name, temp->age, temp->balance, temp->time->tm_yday, temp->time->tm_mon, temp->time->tm_year); 
     }
     temp = NULL;
     delete temp;
@@ -145,4 +152,20 @@ Transactions transactions(User user){
 User assignTransactions(User user,Transactions t){
     user->trc = t;
     return user;
+}
+
+// move to main.cpp to used macros?
+ArregloChars generateAccount(){
+    srand(time(NULL));
+    ArregloChars str = new char[8];
+    size_t max_acc = 8;
+    if(max_acc){
+        max_acc--;
+        for(size_t n = 0; n < max_acc; n++){
+            int numr = rand() % 11;
+            str[n] = numr;
+        }
+        str[max_acc] = '\0';
+    }
+    return str;
 }

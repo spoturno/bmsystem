@@ -4,16 +4,14 @@
 #include "./utils.h"
 #include <time.h>
 #include "transactions.h"
-
-typedef struct _rep_user *User;
-
+typedef struct _rep_user *User; 
 //define operations for user
 
 
 /*
- * creates a new user with a given name, age, ...
+ * creates a new user with a given first_name, age, ...
  */
-User createUser(nat age, ArregloChars name, ArregloChars key, int balance);
+User createUser(ArregloChars first_name, ArregloChars last_name, nat age, ArregloChars account, int balance);
 
 /*
  * it will return the next element in the linked user list of the index hash.
@@ -60,9 +58,9 @@ User addBalance(User user ,int a_balance);
 int age(User user);
 
 /*
- * returns user name
+ * returns user first_name
  */
-ArregloChars name(User user);
+ArregloChars first_name(User user);
 
 /*
  * returns an unique key from the user
@@ -101,6 +99,12 @@ Transactions transactions(User user);
  * assings t:Transactions to user->trc:Transactions
  */
 User assignTransactions(User user,Transactions t);
+
+
+/*
+ * returs a random bank account number which sould be a string of 8 chars (nums)
+ */
+ArregloChars generateAccount();
 
 #endif
 

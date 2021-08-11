@@ -26,11 +26,12 @@ void test(Table user_table){
         return;
     }
     while(!feof(file)){
-        ArregloChars name = new char[MAX_FIRST_NAME];
+        ArregloChars first_name = new char[MAX_FIRST_NAME];
+        ArregloChars last_name = new char[MAX_FIRST_NAME];
         ArregloChars account = new char[MAX_ACC]; 
         int age, balance; 
-        fscanf(file, "%s%d%d%s", name, &age, &balance, account);
-        User user = createUser(age, name, account, balance);
+        fscanf(file, "%s%d%d%s", first_name, &age, &balance, account);
+        User user = createUser(first_name, last_name, age, account, balance);
         user_table = addUser(user, user_table);
     }
 }
@@ -59,11 +60,11 @@ int getInputUser(){
 User selectUser(Table table){
     ArregloChars account = new char[MAX_ACC];
     printTable(table);
-    printf("Inser user Id:");
+    printf("Inser user account:");
     leerChars(account);
     User user = searchUser(table, account);
     if(user == NULL)
-        printf("User with that Id doesn't exists\n");
+        printf("That account number doesn't exists\n");
     return (user == NULL) ? NULL : user;
 }
 
@@ -83,19 +84,26 @@ int main (){
             //add user
         } else if (option == 1){
             nat age; int balance; char temp;
-            ArregloChars name = new char[MAX_FIRST_NAME]; ArregloChars account = new char[MAX_ACC]; 
-            printf("Full Name:");
+            ArregloChars first_name = new char[MAX_FIRST_NAME];
+            ArregloChars last_name = new char[MAX_FIRST_NAME];
+            ArregloChars account = new char[MAX_ACC]; 
+            printf("First Name:");
             scanf("%c", &temp);
-            scanf("%[^\n]", name);
+            scanf("%[^\n]", first_name);
+            printf("Last Name:");
+            scanf("%c", &temp);
+            scanf("%[^\n]", last_name);
             printf("Age:");
             age = leerNat();
-            printf("Identification:");
-            leerChars(account);
+            //printf("Iden:");
+            //leerChars(account);
+            //TODO: generate random account number 
+            account = generateAccount();
             printf("Account balance:");
             scanf("%d", &balance);
             printf("\n");
 
-            User user = createUser(age, name, account, balance);
+            User user = createUser(first_name, last_name, age, account, balance);
             users_table = addUser(user, users_table);
             printf("\n-New user added successfully-\n\n");
 
