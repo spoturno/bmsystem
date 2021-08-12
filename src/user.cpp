@@ -134,7 +134,7 @@ void printUserChain(User user){
     User temp = user;
     while(temp->next != NULL){
         temp = temp->next;
-        printf("| %-15s | %-15s | %-4d | $%-8d | -%d/%d/%d  |\r\n", temp->account, temp->first_name, temp->age, temp->balance, temp->time->tm_yday, temp->time->tm_mon, temp->time->tm_year); 
+        printf("| %-15s | %-15s | %-15s | %-4d | $%-8d | -%d/%d/%d  |\r\n", temp->account, temp->first_name, temp->last_name, temp->age, temp->balance, temp->time->tm_yday, temp->time->tm_mon, temp->time->tm_year); 
     }
     temp = NULL;
     delete temp;

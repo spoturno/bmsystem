@@ -29,7 +29,7 @@ void test(Table user_table){
         ArregloChars last_name = new char[MAX_FIRST_NAME];
         ArregloChars account = new char[MAX_ACC]; 
         int age, balance; 
-        fscanf(file, "%s%s%d%d%s", first_name, last_name, &age, &balance, account);
+        fscanf(file, "%s %s %d %d %s", first_name, last_name, &age, &balance, account);
         User user = createUser(first_name, last_name, age, account, balance);
         user_table = addUser(user, user_table);
     }

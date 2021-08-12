@@ -156,7 +156,7 @@ void freeTable(Table table){
 void printTable(Table table){
     printf("\n");
     printf("+-----------------+-----------------+-----------------+------+-----------+------------+\n");
-    printf("| Id              | First Name      | Second Name     | Age  | Balance   | Since      |\n");
+    printf("| Account         | First Name      | Last Name       | Age  | Balance   | Since      |\n");
     printf("+-----------------+-----------------+-----------------+------+-----------+------------+\n");
     for(int i=0; i<MAX_USERS; i++){
         if(table->array[i] != NULL){
