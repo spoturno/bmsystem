@@ -63,6 +63,11 @@ int age(User user);
 ArregloChars first_name(User user);
 
 /*
+ * returns user last_name
+ */
+ArregloChars last_name(User user);
+
+/*
  * returns an unique key from the user
  */
 ArregloChars account(User user);

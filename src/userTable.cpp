@@ -155,18 +155,18 @@ void freeTable(Table table){
 // fix vertical divisors (TODO)
 void printTable(Table table){
     printf("\n");
-    printf("+-----------------+-----------------+------+-----------+-----------+\n");
-    printf("| Id              | Name            | Age  | Balance   | Since     |\n");
-    printf("+-----------------+-----------------+------+-----------+-----------+\n");
+    printf("+-----------------+-----------------+-----------------+------+-----------+------------+\n");
+    printf("| Id              | First Name      | Second Name     | Age  | Balance   | Since      |\n");
+    printf("+-----------------+-----------------+-----------------+------+-----------+------------+\n");
     for(int i=0; i<MAX_USERS; i++){
         if(table->array[i] != NULL){
             struct tm * date = userAdmissionDate(table->array[i]);
             //TODO: add last name.
-            printf("| %-15s | %-15s | %-4d | $%-8d | %d/%d/%d  |\r\n", account(table->array[i]), first_name(table->array[i]), age(table->array[i]), balance(table->array[i]), date->tm_mday, date->tm_mon+1, date->tm_year+1900); 
+            printf("| %-15s | %-15s | %-15s | %-4d | $%-8d | %d/%d/%d  |\r\n", account(table->array[i]), first_name(table->array[i]), last_name(table->array[i]), age(table->array[i]), balance(table->array[i]), date->tm_mday, date->tm_mon+1, date->tm_year+1900); 
             printUserChain(table->array[i]);
         }
     }
-    printf("+-----------------+-----------------+------+-----------+-----------+\n");
+    printf("+-----------------+-----------------+-----------------+------+-----------+------------+\n");
 }
 
 /*

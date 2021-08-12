@@ -17,10 +17,9 @@
 
 //function to read the test file and show results
 void test(Table user_table){
-    char buffer[10000];
     FILE * file = NULL; 
-    const char *filename = "~/Coding/bmsystem/tests/01.in";
-    file = fopen("tests/01.in", "r");
+    const char *filename = "tests/01.in";
+    file = fopen(filename, "r");
     if(file == NULL){
         fprintf(stderr, "Can't open file\n");
         return;
@@ -34,6 +33,7 @@ void test(Table user_table){
         User user = createUser(first_name, last_name, age, account, balance);
         user_table = addUser(user, user_table);
     }
+    fclose(file);
 }
 
 void initialScreen(){
@@ -42,7 +42,7 @@ void initialScreen(){
     int c;
     fp = fopen("screen.txt", "r");
     while(1){
-        c = fgetc(fp);
+        c = fgetc(fp) ;
         if(feof(fp))
             break;
         printf("%c", c);
