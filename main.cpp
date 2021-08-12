@@ -3,6 +3,7 @@
 #include "include/userTable.h"
 #include "include/transactions.h"
 
+#include <cstdlib>
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
@@ -18,22 +19,41 @@
 //function to read the test file and show results
 void test(Table user_table){
     FILE * file = NULL; 
-    const char *filename = "tests/01.in";
-    file = fopen(filename, "r");
+    char * line = NULL;
+    char *ptr;
+    size_t len = 0;
+    ssize_t read;
+    file = fopen("tests/01.in", "r");
     if(file == NULL){
-        fprintf(stderr, "Can't open file\n");
-        return;
+        exit(EXIT_FAILURE);
     }
-    while(!feof(file)){
+    while((read = getline(&line, &len, file)) != -1){
+        int age, balance; 
         ArregloChars first_name = new char[MAX_FIRST_NAME];
         ArregloChars last_name = new char[MAX_FIRST_NAME];
         ArregloChars account = new char[MAX_ACC]; 
-        int age, balance; 
-        fscanf(file, "%s %s %d %d %s", first_name, last_name, &age, &balance, account);
+
+            ptr = strtok(line, " ");
+            strcpy(first_name, ptr);
+
+            ptr = strtok(NULL, " ");
+            strcpy(last_name, ptr);
+
+            ptr = strtok(NULL, " ");
+            age = atoi(ptr);
+
+            ptr = strtok(NULL, " ");
+            balance = atoi(ptr);
+
+            ptr = strtok(NULL, " ");
+            strcpy(account, ptr);
+
         User user = createUser(first_name, last_name, age, account, balance);
         user_table = addUser(user, user_table);
     }
     fclose(file);
+    if(line)
+        delete line;
 }
 
 void initialScreen(){
