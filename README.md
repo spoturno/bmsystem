@@ -50,10 +50,7 @@ Transaction book (TODO).
 Clear Screen just clears the screen and show again the inital screen to make it cleaner. This also could be implemented reading and writing the stream, selecting the lines that are not supposed to be shown. Finally to exit the program just input `0` on the stream.
 
 ## TODOS
-- Implement user bank account number.
-- Makefile for compilation and others.
 - Help section for the program.
-- Create .txt test files. And maybe integrate with github tests.
 - Store data in mySQL databse.
 - Make invalid_input_error() for checking program input.
 - Image for github README
@@ -67,3 +64,4 @@ Have you spotted a typo, would you like to fix a link, or is there something you
 - [Right and Left Shifting](https://www.geeksforgeeks.org/left-shift-right-shift-operators-c-cpp/)
 - [Little-Big endian](https://www.geeksforgeeks.org/little-and-big-endian-mystery/)
 - [Convert Little endian to Big endian](https://stackoverflow.com/questions/19275955/convert-little-endian-to-big-endian)
+- [SQLite C](https://www.sqlite.org/index.html)

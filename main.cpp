@@ -33,24 +33,23 @@ void test(Table user_table){
         ArregloChars last_name = new char[MAX_FIRST_NAME];
         ArregloChars account = new char[MAX_ACC]; 
 
-            char *newline = strchr(line, '\n');
-            if(newline)
-                *newline = 0;
-            ptr = strtok(line, " ");
-            strcpy(first_name, ptr);
+        char *newline = strchr(line, '\n');
+        if(newline) *newline = 0;
+            
+        ptr = strtok(line, " ");
+        strcpy(first_name, ptr);
 
-            ptr = strtok(NULL, " ");
-            strcpy(last_name, ptr);
+        ptr = strtok(NULL, " ");
+        strcpy(last_name, ptr);
 
-            ptr = strtok(NULL, " ");
-            age = atoi(ptr);
+        ptr = strtok(NULL, " ");
+        age = atoi(ptr);
 
-            ptr = strtok(NULL, " ");
-            balance = atoi(ptr);
+        ptr = strtok(NULL, " ");
+        balance = atoi(ptr);
 
-            ptr = strtok(NULL, " ");
-            strcpy(account, ptr);
-
+        ptr = strtok(NULL, " ");
+        strcpy(account, ptr);
 
         User user = createUser(first_name, last_name, age, account, balance);
         user_table = addUser(user, user_table);
