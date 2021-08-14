@@ -51,7 +51,7 @@ void test(Table user_table){
         ptr = strtok(NULL, " ");
         strcpy(account, ptr);
 
-        User user = createUser(first_name, last_name, age, account, balance);
+        User user = createUser(first_name, last_name, age, balance);
         user_table = addUser(user, user_table);
     }
     fclose(file);
@@ -109,7 +109,6 @@ int main (){
             nat age; int balance; char temp;
             ArregloChars first_name = new char[MAX_FIRST_NAME];
             ArregloChars last_name = new char[MAX_FIRST_NAME];
-            ArregloChars account = new char[MAX_ACC]; 
             printf("First Name:");
             scanf("%c", &temp);
             scanf("%[^\n]", first_name);
@@ -121,12 +120,12 @@ int main (){
             //printf("Iden:");
             //leerChars(account);
             //TODO: generate random account number 
-            account = generateAccount();
+            //account = generateAccount();
             printf("Account balance:");
             scanf("%d", &balance);
             printf("\n");
 
-            User user = createUser(first_name, last_name, age, account, balance);
+            User user = createUser(first_name, last_name, age, balance);
             users_table = addUser(user, users_table);
             printf("\n-New user added successfully-\n\n");
 

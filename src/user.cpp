@@ -21,10 +21,10 @@ struct _rep_user{
     Transactions trc;
 };
 
-User createUser(ArregloChars first_name,ArregloChars last_name,nat age, ArregloChars account, int balance){
+User createUser(ArregloChars first_name,ArregloChars last_name,nat age, int balance){
     User user = new _rep_user;
     user->age = age;
-    user->account = account;
+    user->account = generateAccount();
     user->first_name = first_name;
     user->last_name = last_name;
     user->next = NULL;
@@ -157,13 +157,13 @@ User assignTransactions(User user,Transactions t){
 // move to main.cpp to used macros?
 ArregloChars generateAccount(){
     srand(time(NULL));
-    ArregloChars str = new char[8];
-    size_t max_acc = 8;
+    ArregloChars str = new char[9];
+    size_t max_acc = 9;
     if(max_acc){
         max_acc--;
         for(size_t n = 0; n < max_acc; n++){
-            int numr = rand() % 11;
-            str[n] = numr;
+            int numr = rand() % 10;
+            str[n] = numr + '0';
         }
         str[max_acc] = '\0';
     }
