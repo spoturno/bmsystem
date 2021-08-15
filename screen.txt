@@ -16,7 +16,10 @@
 |    [5] Make transaction                  |
 |    [6] Transaction user book             |
 |    [7] Add balance to Account            |
+|                                          |
+|                                          |
+|                                          |
 |    [8] CLEAR SCREEN                      |
-|    [0] Exit                              |
+|    [0] EXIT                              |
 |                                          |
 |__________________________________________|
