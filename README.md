@@ -66,3 +66,4 @@ Have you spotted a typo, would you like to fix a link, or is there something you
 - [Little-Big endian](https://www.geeksforgeeks.org/little-and-big-endian-mystery/)
 - [Convert Little endian to Big endian](https://stackoverflow.com/questions/19275955/convert-little-endian-to-big-endian)
 - [SQLite C](https://www.sqlite.org/index.html)
+- [Ncurses howto](https://tldp.org/HOWTO/NCURSES-Programming-HOWTO/)
