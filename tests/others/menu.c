@@ -37,7 +37,7 @@ int main(){
 	starty = (24 - HEIGHT) / 2;
 
 	int highlight = 0;
-	int choice = 0;
+	int choice = -1;
 		
 	WINDOW *menuwin = newwin(HEIGHT, WIDTH, starty, startx);
 	keypad(menuwin, TRUE);
@@ -69,7 +69,7 @@ int main(){
 		}
         printMenu(menuwin, highlight);
 
-		if(choice != 0)	/* User did a choice come out of the infinite loop */
+		if(choice != -1)	/* User did a choice come out of the infinite loop */
 			break;
 	}	
 
