@@ -3,6 +3,11 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "../../include/user.h"
+#include "../../include/utils.h"
+#include "../../include/userTable.h"
+#include "../../include/transactions.h"
+
 #define WIDTH 50
 #define HEIGHT 15
 
