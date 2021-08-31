@@ -2,7 +2,6 @@
 #ifndef _HASH_H
 #define _HASH_H
 
-#include "./utils.h"
 #include <stddef.h>
 
 #define SHA256_BLOCK_SIZE 32

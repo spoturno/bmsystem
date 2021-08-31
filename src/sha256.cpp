@@ -14,7 +14,6 @@
     the first word of the input message "abc" after padding is 0x61626380
 *************************************************/
 
-
 #include <cstring>
 #include <stdio.h>
 #include <stdlib.h>
