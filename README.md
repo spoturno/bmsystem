@@ -1,5 +1,5 @@
 # Bank Management System
-This is a bank managment system made with c and some of c++ (new & delete). The goal of this project is work with Abstract Data Types (Hash Table, AVL trees, Linked List).
+Simple Bank managment system made with c and some of c++ (new & delete). The goal of this project is work with Abstract Data Types (Hash Table, AVL trees, Linked List).
 
 - **src/** (source code of each module)
 - **tests/** (some functions that test and showcase src/ code)

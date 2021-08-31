@@ -2,7 +2,7 @@ all: main
 
 .PHONY: all clean_bin clean_test clean testing
 
-MODULOS = utils user userTable timer transactions
+MODULOS = utils user userTable timer transactions sha256
 
 # directories
 HDIR = include

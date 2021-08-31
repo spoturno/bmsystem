@@ -19,7 +19,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <memory.h>
-#include "../include/hash.h"
+#include "../include/sha256.h"
 
 /*************************************************/
 #define ROTLEFT(a,b) (((a) << (b)) | ((a) >> (32-(b))))
